@@ -22,5 +22,10 @@ namespace BookLibraryApp.Books.Dto
                 name = value;
             }
         }
+
+        public GenreDto(string name)
+        {
+            this.name = name;
+        }
     }
 }

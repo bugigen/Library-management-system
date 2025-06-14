@@ -36,5 +36,11 @@ namespace BookLibraryApp.Books.Dto
                 birthYear = value;
             }
         }
+
+        public AuthorDto(string name, int birthYear)
+        {
+            Name = name;
+            BirthYear = birthYear;
+        }
     }
 }

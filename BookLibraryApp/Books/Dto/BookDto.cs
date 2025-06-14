@@ -64,5 +64,13 @@ namespace BookLibraryApp.Books.Dto
                 genreId = value;
             }
         }
+
+        public BookDto(string name, int publishingYear, int authorId, int genreId)
+        {
+            Name = name;
+            PublishingYear = publishingYear;
+            AuthorId = authorId;
+            GenreId = genreId;
+        }
     }
 }
