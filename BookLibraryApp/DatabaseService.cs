@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 
 namespace BookLibraryApp
 {
@@ -43,6 +38,59 @@ namespace BookLibraryApp
             }
         }
 
-        public SqliteConnection GetConnection() => new SqliteConnection( _connectionString );
+        public void AddBook(int id,
+                            string title,
+                            string author,
+                            int year,
+                            string genre,
+                            string status)
+        {
+            using (var connection = new SqliteConnection(_connectionString))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText = """
+                    INSERT INTO Books (
+                        Id, Title, Author, Year, Genre, Status
+                    ) 
+                    VALUES (
+                        $id, $title, $author, $year, $genre, $status
+                    );
+                    """;
+
+                command.Parameters.AddWithValue("$id", id);
+                command.Parameters.AddWithValue("$title", title);
+                command.Parameters.AddWithValue("$author", author);
+                command.Parameters.AddWithValue("$year", year);
+                command.Parameters.AddWithValue("$genre", genre);
+                command.Parameters.AddWithValue("$status", status);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void ShowAllBooks()
+        {
+            using (var connection = new SqliteConnection(_connectionString))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM Books";
+
+                using (var book = command.ExecuteReader())
+                {
+                    while (book.Read())
+                    {
+                        Console.WriteLine($"ID: {book["Id"]} | Название: {book["Title"]} | " +
+                            $"Автор: {book["Author"]} | Год выпуска: {book["Year"]} | " +
+                            $"Жанр: {book["Genre"]} | Статус: {book["Status"]}");
+                    }
+                }
+            }
+        }
+
+        //public SqliteConnection GetConnection() => new SqliteConnection( _connectionString );
     }
 }

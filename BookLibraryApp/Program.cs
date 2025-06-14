@@ -16,39 +16,23 @@ namespace BookLibraryApp
             Application.Run(new Form1());
 
             var databaseService = new DatabaseService();
+            RunDatabaseOperations(databaseService);
+        }
 
+        private static void RunDatabaseOperations(DatabaseService databaseService)
+        {
             try
             {
                 databaseService.InitializeDatabase();
                 Console.WriteLine("База данных успешно создана.");
 
-                using (SqliteConnection connection = databaseService.GetConnection())
-                {
-                    connection.Open();
+                databaseService.AddBook(1, "Название 1", "Автор 1", 1, "Жанр 1", "доступна");
+                databaseService.AddBook(2, "Название 2", "Автор 2", 2, "Жанр 2", "доступна");
+                databaseService.AddBook(3, "Название 3", "Автор 3", 3, "Жанр 3", "доступна");
 
-                    var insertCommand = connection.CreateCommand();
-
-                    insertCommand.CommandText = "INSERT INTO Books (Id, Title, Author, Year, " +
-                        "Genre, Status) VALUES (1, 'Название 1', 'Автор 1', 'Год 1', 'Жанр 1', " +
-                        "'доступна')";
-
-                    int rowsAffected = insertCommand.ExecuteNonQuery();
-                    Console.WriteLine($"Добавлено записей: {rowsAffected}");
-
-                    var selectCommand = connection.CreateCommand();
-
-                    selectCommand.CommandText = "SELECT * FROM Books";
-
-                    using (var book = selectCommand.ExecuteReader())
-                    {
-                        while (book.Read())
-                        {
-                            Console.WriteLine($"ID: {book["Id"]}, Название: {book["Title"]}, " +
-                                $"Автор: {book["Author"]}, Год выпуска: {book["Year"]}, " +
-                                $"Жанр: {book["Genre"]}, Статус: {book["Status"]}");
-                        }
-                    }
-                }
+                Console.WriteLine("Данные добавлены.");
+                Console.WriteLine("\nВсе книги:");
+                databaseService.ShowAllBooks();
             }
             catch (Exception ex)
             {
