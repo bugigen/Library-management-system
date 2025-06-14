@@ -34,5 +34,15 @@ namespace BookLibraryApp.Books.Models
         [Required]
         [DefaultValue(false)]
         public bool IsAlreadyTaken { get; set; }
+
+
+        public Book(string name, int publishingYear, int authorInfoKey, int genreInfoKey, bool isAlreadyTaken)
+        {
+            Name = name;
+            PublishingYear = publishingYear;
+            AuthorInfoKey = authorInfoKey;
+            GenreInfoKey = genreInfoKey;
+            IsAlreadyTaken = isAlreadyTaken;
+        }
     }
 }

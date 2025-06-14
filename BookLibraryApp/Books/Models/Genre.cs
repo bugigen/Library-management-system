@@ -20,5 +20,10 @@ namespace BookLibraryApp.Books.Models
         [MinLength(1)]
         [MaxLength(100)]
         public string Name { get; set; }
+
+        public Genre(string name)
+        {
+            Name = name;
+        }
     }
 }

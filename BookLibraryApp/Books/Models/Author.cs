@@ -22,5 +22,11 @@ namespace BookLibraryApp.Books.Models
         [Required]
         [NotNull]
         public int BirthYear { get; set; }
+
+        public Author(string name, int birthYear)
+        {
+            FullName = name;
+            BirthYear = birthYear;
+        }
     }
 }
