@@ -1,4 +1,4 @@
-using Microsoft.Data.Sqlite;
+п»їusing Microsoft.Data.Sqlite;
 
 namespace BookLibraryApp
 {
@@ -20,7 +20,7 @@ namespace BookLibraryApp
             try
             {
                 databaseService.InitializeDatabase();
-                Console.WriteLine("База данных успешно создана.");
+                Console.WriteLine("Р‘Р°Р·Р° РґР°РЅРЅС‹С… СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅР°.");
 
                 using (SqliteConnection connection = databaseService.GetConnection())
                 {
@@ -29,11 +29,11 @@ namespace BookLibraryApp
                     var insertCommand = connection.CreateCommand();
 
                     insertCommand.CommandText = "INSERT INTO Books (Id, Title, Author, Year, " +
-                        "Genre, Status) VALUES (1, 'Название 1', 'Автор 1', 'Год 1', 'Жанр 1', " +
-                        "'доступна')";
+                        "Genre, Status) VALUES (1, 'РќР°Р·РІР°РЅРёРµ 1', 'РђРІС‚РѕСЂ 1', 'Р“РѕРґ 1', 'Р–Р°РЅСЂ 1', " +
+                        "'РґРѕСЃС‚СѓРїРЅР°')";
 
                     int rowsAffected = insertCommand.ExecuteNonQuery();
-                    Console.WriteLine($"Добавлено записей: {rowsAffected}");
+                    Console.WriteLine($"Р”РѕР±Р°РІР»РµРЅРѕ Р·Р°РїРёСЃРµР№: {rowsAffected}");
 
                     var selectCommand = connection.CreateCommand();
 
@@ -43,16 +43,16 @@ namespace BookLibraryApp
                     {
                         while (book.Read())
                         {
-                            Console.WriteLine($"ID: {book["Id"]}, Название: {book["Title"]}, " +
-                                $"Автор: {book["Author"]}, Год выпуска: {book["Year"]}, " +
-                                $"Жанр: {book["Genre"]}, Статус: {book["Status"]}");
+                            Console.WriteLine($"ID: {book["Id"]}, РќР°Р·РІР°РЅРёРµ: {book["Title"]}, " +
+                                $"РђРІС‚РѕСЂ: {book["Author"]}, Р“РѕРґ РІС‹РїСѓСЃРєР°: {book["Year"]}, " +
+                                $"Р–Р°РЅСЂ: {book["Genre"]}, РЎС‚Р°С‚СѓСЃ: {book["Status"]}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка: {ex.Message}");
+                Console.WriteLine($"РћС€РёР±РєР°: {ex.Message}");
             }
         }
     }
