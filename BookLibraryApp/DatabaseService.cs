@@ -70,8 +70,10 @@ namespace BookLibraryApp
             }
         }
 
-        public void ShowAllBooks()
+        public List<Book> ShowAllBooks()
         {
+            var books = new List<Book>();
+
             using (var connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
@@ -79,18 +81,24 @@ namespace BookLibraryApp
                 var command = connection.CreateCommand();
                 command.CommandText = "SELECT * FROM Books";
 
-                using (var book = command.ExecuteReader())
+                using (var reader = command.ExecuteReader())
                 {
-                    while (book.Read())
+                    while (reader.Read())
                     {
-                        Console.WriteLine($"ID: {book["Id"]} | Название: {book["Title"]} | " +
-                            $"Автор: {book["Author"]} | Год выпуска: {book["Year"]} | " +
-                            $"Жанр: {book["Genre"]} | Статус: {book["Status"]}");
+                        books.Add(new Book
+                        {
+                            Id = reader.GetInt32(0),
+                            Title = reader.GetString(1),
+                            Author = reader.GetString(2),
+                            Year = reader.GetInt32(3),
+                            Genre = reader.GetString(4),
+                            Status = reader.GetString(5),
+                        });
                     }
                 }
             }
-        }
 
-        //public SqliteConnection GetConnection() => new SqliteConnection( _connectionString );
+            return books;
+        }
     }
 }
