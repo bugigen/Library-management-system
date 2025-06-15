@@ -32,6 +32,7 @@ namespace BookLibraryApp
 
                 Console.WriteLine("Данные добавлены.");
                 Console.WriteLine("\nВсе книги:");
+
                 databaseService.ShowAllBooks();
             }
             catch (Exception ex)
