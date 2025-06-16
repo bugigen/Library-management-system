@@ -13,6 +13,6 @@ namespace BookLibraryApp.Books.Service
         Genre GetGenreById(int id);
         List<Genre> GetAllGenres();
         void DeleteGenre(int id);
-        Genre AddNewGenre(GenreDto genreDto);
+        Task<Genre> AddNewGenre(GenreDto genreDto);
     }
 }

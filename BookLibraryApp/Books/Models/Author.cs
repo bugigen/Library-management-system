@@ -28,5 +28,7 @@ namespace BookLibraryApp.Books.Models
             FullName = name;
             BirthYear = birthYear;
         }
+
+        public Author() { }
     }
 }

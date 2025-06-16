@@ -2,10 +2,11 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookLibraryApp.Books.Models
 {
-    [Index(nameof(Name), nameof(AuthorInfoKey), nameof(GenreInfoKey), IsUnique = true)]
+    [Microsoft.EntityFrameworkCore.Index(nameof(Name), nameof(AuthorInfoKey), nameof(GenreInfoKey), IsUnique = true)]
     public sealed class Book
     {
         [Key]

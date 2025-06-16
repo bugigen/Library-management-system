@@ -1,38 +1,60 @@
 ﻿using BookLibraryApp.Books.Dto;
+using BookLibraryApp.Books.Mapper;
 using BookLibraryApp.Books.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using BookLibraryApp.CustomExceptions;
+using BookLibraryApp.DataBase;
+using BookLibraryApp.HelperInterfaces;
 using System.Threading.Tasks;
 
 namespace BookLibraryApp.Books.Service
 {
     public class AuthorService : IAuthorService
     {
-        public Author AddNewAuthor(AuthorDto authorDto)
+        private readonly BookAppContext _context;
+        private readonly IMapper<Author, AuthorDto> _mapper;
+
+        public AuthorService(BookAppContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _mapper = new AuthorMapper();
+        }
+        public async Task<Author> AddNewAuthor(AuthorDto authorDto)
+        {
+            var author = _mapper.ToDomain(authorDto);
+            await _context.Authors.AddAsync(author);
+            await _context.SaveChangesAsync();
+            return author;
         }
 
-        public void DeleteAuthor(int id)
+        public async void DeleteAuthor(int id)
         {
-            throw new NotImplementedException();
+            var author = GetAuthorById(id);
+            _context.Authors.Remove(author);
+            await _context.SaveChangesAsync();
         }
 
         public List<Author> GetAllAuthors()
         {
-            throw new NotImplementedException();
+            return _context.Authors.ToList();
         }
 
         public Author GetAuthorById(int id)
         {
-            throw new NotImplementedException();
+            var authorFromDb = _context.Authors.Where(a => a.Id.Equals(id)).FirstOrDefault();
+            if (authorFromDb is null)
+            {
+                throw new NotFoundException($"Книга с id {id} не найдена");
+            }
+            return authorFromDb;
         }
 
-        public Author UpdateAuthor(AuthorDto authorDto)
+        public async Task<Author> UpdateAuthor(int id, AuthorDto authorDto)
         {
-            throw new NotImplementedException();
+            var authorFromDb = GetAuthorById(id);
+            authorFromDb.FullName = authorFromDb.FullName;
+            authorFromDb.BirthYear = authorDto.BirthYear;
+            await _context.SaveChangesAsync();
+            return authorFromDb;
         }
     }
 }

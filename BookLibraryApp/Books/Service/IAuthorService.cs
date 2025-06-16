@@ -12,8 +12,8 @@ namespace BookLibraryApp.Books.Service
     {
         Author GetAuthorById(int id);
         List<Author> GetAllAuthors();
-        Author AddNewAuthor(AuthorDto authorDto);
-        Author UpdateAuthor(AuthorDto authorDto);
+        Task<Author> AddNewAuthor(AuthorDto authorDto);
+        Task<Author> UpdateAuthor(int id, AuthorDto authorDto);
         void DeleteAuthor(int id);
     }
 }
