@@ -11,24 +11,10 @@ namespace BookLibraryApp
         {
             // ApplicationConfiguration.Initialize();
             //Application.Run(new Form1());
-            #region Пример добавления нового автора
             BookAppContext context = new BookAppContext();
-            IAuthorService authorService = new AuthorService(context);
-            AuthorDto dto = new AuthorDto("Александр Сергеевич Пушкин", 1799);
-            var author = authorService.AddNewAuthor(dto).Result;
-            var authors = authorService.GetAllAuthors();
-            Console.WriteLine(authors);
-            #endregion
-
-            #region Пример добавления нового жанра
-            IGenreService genreService = new GenreService(context);
-            GenreDto genreDto = new GenreDto("Сказка");
-            var genre = genreService.AddNewGenre(genreDto);
-            #endregion
-
             #region Пример добавления новой книги
-            var bookDto = new BookDto("Сказка о царе Салтане", 1831, author.Id, genre.Id);
-            IBookService bookService = new BookService(context, authorService, genreService);
+            var bookDto = new BookDto("Сказка о царе Салтане", 1831, "Александр Сергеевич Пушкин", "Сказка");
+            IBookService bookService = new BookService(context);
             var book = bookService.AddBook(bookDto);
             #endregion
             //var databaseService = new DatabaseService();

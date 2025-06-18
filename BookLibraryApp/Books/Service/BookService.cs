@@ -11,21 +11,15 @@ namespace BookLibraryApp.Books.Service
     {
         private readonly BookAppContext _context;
         private readonly IMapper<Book, BookDto> _mapper;
-        private readonly IAuthorService _authorService;
-        private readonly IGenreService _genreService;
 
-        public BookService(BookAppContext context, IAuthorService authorService, IGenreService genreService)
+        public BookService(BookAppContext context)
         {
             _context = context;
             _mapper = new BookMapper();
-            _authorService = authorService;
-            _genreService = genreService;
         }
         public async Task<Book> AddBook(BookDto dto)
         {
             Book book = _mapper.ToDomain(dto);
-            book.Author = _authorService.GetAuthorById(book.AuthorInfoKey);
-            book.Genre = _genreService.GetGenreById(book.GenreInfoKey);
             await _context.Books.AddAsync(book);
             await _context.SaveChangesAsync();
             return book;
@@ -76,10 +70,6 @@ namespace BookLibraryApp.Books.Service
         public async Task<Book> UpdateBook(int id, BookDto dto)
         {
             var book = GetBookById(id);
-            book.AuthorInfoKey = dto.AuthorId;
-            book.Author = _authorService.GetAuthorById(book.AuthorInfoKey);
-            book.GenreInfoKey = dto.GenreId;
-            book.Genre = _genreService.GetGenreById(book.GenreInfoKey);
             book.Name = dto.Name;
             book.PublishingYear = dto.PublishingYear;
             await _context.SaveChangesAsync();

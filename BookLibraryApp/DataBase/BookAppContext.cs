@@ -11,8 +11,6 @@ namespace BookLibraryApp.DataBase
     public class BookAppContext : DbContext
     {
         public DbSet<Book> Books => Set<Book>();
-        public DbSet<Author> Authors => Set<Author>();
-        public DbSet<Genre> Genres => Set<Genre>();
 
         public BookAppContext()
         {
