@@ -8,39 +8,29 @@ using System.Threading.Tasks;
 
 namespace BookLibraryApp.Books.Service
 {
-    public class BookService : IBookService
+    public class AuthorService : IAuthorService
     {
-        public Book AddBook(BookDto dto)
+        public Author AddNewAuthor(AuthorDto authorDto)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteBook(int id)
+        public void DeleteAuthor(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Book GetBookById(int id)
+        public List<Author> GetAllAuthors()
         {
             throw new NotImplementedException();
         }
 
-        public List<Book> GetBooks()
+        public Author GetAuthorById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Book ReturnBookFromRent(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Book TakeBookToRent(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Book UpdateBook(BookDto dto)
+        public Author UpdateAuthor(AuthorDto authorDto)
         {
             throw new NotImplementedException();
         }

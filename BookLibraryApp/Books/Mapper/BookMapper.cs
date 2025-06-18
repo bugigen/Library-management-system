@@ -17,8 +17,8 @@ namespace BookLibraryApp.Books.Mapper
                 (
                     dto.Name,
                     dto.PublishingYear,
-                    dto.Author,
-                    dto.Genre,
+                    dto.AuthorId,
+                    dto.GenreId,
                     false
                 );
         }
@@ -29,8 +29,8 @@ namespace BookLibraryApp.Books.Mapper
                 (
                     domain.Name,
                     domain.PublishingYear,
-                    domain.Author,
-                    domain.Genre
+                    domain.AuthorInfoKey,
+                    domain.GenreInfoKey
                 );
         }
     }

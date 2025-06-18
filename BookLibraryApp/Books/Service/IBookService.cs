@@ -7,10 +7,10 @@ namespace BookLibraryApp.Books.Service
     {
         List<Book> GetBooks();
         Book GetBookById(int id);
-        Task<Book> AddBook(BookDto dto);
-        Task<Book> UpdateBook(int id, BookDto dto);
-        Task<Book> TakeBookToRent(int id);
-        Task<Book> ReturnBookFromRent(int id);
+        Book AddBook(BookDto dto);
+        Book UpdateBook(BookDto dto);
+        Book TakeBookToRent(int id);
+        Book ReturnBookFromRent(int id);
         void DeleteBook(int id);
     }
 }
