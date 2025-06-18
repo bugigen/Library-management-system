@@ -10,8 +10,8 @@ namespace BookLibraryApp.Books.Dto
     {
         private string name;
         private int publishingYear;
-        private string author;
-        private string genre;
+        private int authorId;
+        private int genreId;
 
         public string Name
         {
@@ -31,7 +31,7 @@ namespace BookLibraryApp.Books.Dto
             get { return publishingYear; }
             set
             {
-                if (value < -2600 || value > DateTime.Now.Year)
+                if(value < -2600 || value > DateTime.Now.Year)
                 {
                     throw new ArgumentException("Невалидный год издания книги");
                 }
@@ -39,38 +39,38 @@ namespace BookLibraryApp.Books.Dto
             }
         }
 
-        public string Author
+        public int AuthorId
         {
-            get { return author; }
+            get { return authorId; }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if(value < 0)
                 {
                     throw new ArgumentException("Id не может быть меньше нуля");
                 }
-                author = value;
+                authorId = value;
             }
         }
 
-        public string Genre
+        public int GenreId
         {
-            get { return genre; }
+            get { return genreId; }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (value < 0)
                 {
                     throw new ArgumentException("Id не может быть меньше нуля");
                 }
-                genre = value;
+                genreId = value;
             }
         }
 
-        public BookDto(string name, int publishingYear, string author, string genre)
+        public BookDto(string name, int publishingYear, int authorId, int genreId)
         {
             Name = name;
             PublishingYear = publishingYear;
-            Author = author;
-            Genre = genre;
+            AuthorId = authorId;
+            GenreId = genreId;
         }
     }
 }
