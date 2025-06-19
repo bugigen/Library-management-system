@@ -60,6 +60,13 @@
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
             tabPage4 = new TabPage();
+            listView3 = new ListView();
+            columnHeader11 = new ColumnHeader();
+            columnHeader12 = new ColumnHeader();
+            columnHeader13 = new ColumnHeader();
+            columnHeader14 = new ColumnHeader();
+            columnHeader15 = new ColumnHeader();
+            columnHeader16 = new ColumnHeader();
             label4 = new Label();
             button5 = new Button();
             button_ = new Button();
@@ -80,13 +87,6 @@
             columnHeader17 = new ColumnHeader();
             columnHeader19 = new ColumnHeader();
             columnHeader22 = new ColumnHeader();
-            listView3 = new ListView();
-            columnHeader11 = new ColumnHeader();
-            columnHeader12 = new ColumnHeader();
-            columnHeader13 = new ColumnHeader();
-            columnHeader14 = new ColumnHeader();
-            columnHeader15 = new ColumnHeader();
-            columnHeader16 = new ColumnHeader();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -356,7 +356,7 @@
             listView2.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader8, columnHeader9, columnHeader10 });
             listView2.Location = new Point(19, 62);
             listView2.Name = "listView2";
-            listView2.Size = new Size(473, 204);
+            listView2.Size = new Size(478, 204);
             listView2.TabIndex = 1;
             listView2.UseCompatibleStateImageBehavior = false;
             listView2.View = View.Details;
@@ -399,6 +399,50 @@
             tabPage4.TabIndex = 3;
             tabPage4.Text = "tabPage4";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // listView3
+            // 
+            listView3.Columns.AddRange(new ColumnHeader[] { columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15, columnHeader16 });
+            listView3.Location = new Point(15, 103);
+            listView3.Name = "listView3";
+            listView3.Size = new Size(484, 204);
+            listView3.TabIndex = 8;
+            listView3.UseCompatibleStateImageBehavior = false;
+            listView3.View = View.Details;
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "ID";
+            columnHeader11.Width = 30;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "Автор";
+            columnHeader12.TextAlign = HorizontalAlignment.Center;
+            columnHeader12.Width = 100;
+            // 
+            // columnHeader13
+            // 
+            columnHeader13.Text = "Название";
+            columnHeader13.TextAlign = HorizontalAlignment.Center;
+            columnHeader13.Width = 150;
+            // 
+            // columnHeader14
+            // 
+            columnHeader14.Text = "Год";
+            columnHeader14.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader15
+            // 
+            columnHeader15.Text = "Жанр";
+            columnHeader15.TextAlign = HorizontalAlignment.Center;
+            columnHeader15.Width = 70;
+            // 
+            // columnHeader16
+            // 
+            columnHeader16.Text = "Статус";
+            columnHeader16.TextAlign = HorizontalAlignment.Center;
+            columnHeader16.Width = 70;
             // 
             // label4
             // 
@@ -570,50 +614,6 @@
             columnHeader22.Text = "Кто взял";
             columnHeader22.TextAlign = HorizontalAlignment.Center;
             columnHeader22.Width = 100;
-            // 
-            // listView3
-            // 
-            listView3.Columns.AddRange(new ColumnHeader[] { columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15, columnHeader16 });
-            listView3.Location = new Point(15, 103);
-            listView3.Name = "listView3";
-            listView3.Size = new Size(484, 204);
-            listView3.TabIndex = 8;
-            listView3.UseCompatibleStateImageBehavior = false;
-            listView3.View = View.Details;
-            // 
-            // columnHeader11
-            // 
-            columnHeader11.Text = "ID";
-            columnHeader11.Width = 30;
-            // 
-            // columnHeader12
-            // 
-            columnHeader12.Text = "Автор";
-            columnHeader12.TextAlign = HorizontalAlignment.Center;
-            columnHeader12.Width = 100;
-            // 
-            // columnHeader13
-            // 
-            columnHeader13.Text = "Название";
-            columnHeader13.TextAlign = HorizontalAlignment.Center;
-            columnHeader13.Width = 150;
-            // 
-            // columnHeader14
-            // 
-            columnHeader14.Text = "Год";
-            columnHeader14.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader15
-            // 
-            columnHeader15.Text = "Жанр";
-            columnHeader15.TextAlign = HorizontalAlignment.Center;
-            columnHeader15.Width = 70;
-            // 
-            // columnHeader16
-            // 
-            columnHeader16.Text = "Статус";
-            columnHeader16.TextAlign = HorizontalAlignment.Center;
-            columnHeader16.Width = 70;
             // 
             // Form1
             // 

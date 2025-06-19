@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button_add = new Button();
+            button_edit = new Button();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
@@ -39,15 +39,16 @@
             label1 = new Label();
             SuspendLayout();
             // 
-            // button_add
+            // button_edit
             // 
-            button_add.Font = new Font("Segoe UI", 12F);
-            button_add.Location = new Point(165, 150);
-            button_add.Name = "button_add";
-            button_add.Size = new Size(116, 32);
-            button_add.TabIndex = 17;
-            button_add.Text = "Добавить";
-            button_add.UseVisualStyleBackColor = true;
+            button_edit.Font = new Font("Segoe UI", 12F);
+            button_edit.Location = new Point(165, 150);
+            button_edit.Name = "button_edit";
+            button_edit.Size = new Size(116, 32);
+            button_edit.TabIndex = 17;
+            button_edit.Text = "Изменить";
+            button_edit.UseVisualStyleBackColor = true;
+            button_edit.Click += button_edit_Click;
             // 
             // label4
             // 
@@ -122,7 +123,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(368, 209);
-            Controls.Add(button_add);
+            Controls.Add(button_edit);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -139,7 +140,7 @@
 
         #endregion
 
-        private Button button_add;
+        private Button button_edit;
         private Label label4;
         private Label label3;
         private Label label2;

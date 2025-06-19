@@ -1,11 +1,29 @@
-using System.Xml.Linq;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Runtime.ConstrainedExecution;
+using System.Text;
+using System.Threading.Tasks;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Runtime.CompilerServices;
 using BookLibraryApp.Books.Dto;
 using BookLibraryApp.Books.Models;
+using BookLibraryApp.Books.Service;
 
 namespace BookLibraryApp
 {
     public partial class Form1 : Form
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public static Form1 SelfRef { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -20,6 +38,7 @@ namespace BookLibraryApp
             {
                 listView1.Columns[i].Width = totalWidth / columnCount;
             }
+            SelfRef = this;
         }
 
         private void button_show_book_Click(object sender, EventArgs e)
@@ -27,6 +46,7 @@ namespace BookLibraryApp
             this.tabControl1.SelectedIndex = 1;
             listView1.Items.Clear();
 
+            //BookService.GetBooks();
             //var databaseService = new DatabaseService();
             //List<Book> books = new List<Book>();
             //books = databaseService.ShowAllBooks();
@@ -43,12 +63,12 @@ namespace BookLibraryApp
             //    listView1.Items.Add(lvItem);
             //}
 
-            AuthorDto author = new AuthorDto("Victor", 1999);
+            //AuthorDto author = new AuthorDto("Victor", 1999);
         }
 
         private void button_new_book_Click(object sender, EventArgs e)
         {
-            AddNewBook addNewBook = new AddNewBook(1);
+            AddNewBook addNewBook = new AddNewBook(1, SelfRef);
             addNewBook.Show();
         }
 
@@ -87,6 +107,19 @@ namespace BookLibraryApp
         private void button_back_menu_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedIndex = 0;
+        }
+
+        public void closeAddNewBook()
+        {
+            try
+            {
+                AddNewBook fr = (AddNewBook)Application.OpenForms["AddNewBook"];
+                fr.Close();
+            }
+            catch (NullReferenceException ne)
+            {
+
+            }
         }
     }
 }
