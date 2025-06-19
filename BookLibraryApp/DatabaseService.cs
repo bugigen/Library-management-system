@@ -22,6 +22,12 @@ namespace BookLibraryApp
 
             Connection.Open();
 
+            using (var command = Connection.CreateCommand())
+            {
+                command.CommandText = "PRAGMA foreign_keys = ON;";
+                command.ExecuteNonQuery();
+            }
+
             if (isNewDatabase)
                 CreateTables();
         }
@@ -31,13 +37,13 @@ namespace BookLibraryApp
             using (var command = Connection.CreateCommand())
             {
                 command.CommandText = """
-                CREATE TABLE Books (
+                CREATE TABLE IF NOT EXISTS Books (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Title TEXT NOT NULL,
                     Author TEXT NOT NULL,
                     Year INTEGER NOT NULL,
                     Genre TEXT NOT NULL,
-                    Status TEXT NOT NULL CHECK(Status IN ('доступна', 'взята')
+                    Status TEXT NOT NULL CHECK(Status IN ('доступна', 'взята'))
                 )
                 """;
 
@@ -64,6 +70,7 @@ namespace BookLibraryApp
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     BookId INTEGER NOT NULL,
                     ReaderId INTEGER NOT NULL,
+                    RentDate TEXT NOT NULL DEFAULT (datetime('now')),
                     FOREIGN KEY (BookId) REFERENCES Books(Id) ON DELETE CASCADE,
                     FOREIGN KEY (ReaderId) REFERENCES Readers(Id) ON DELETE CASCADE
                 )
