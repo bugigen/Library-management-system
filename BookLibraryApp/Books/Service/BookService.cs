@@ -1,48 +1,79 @@
 ﻿using BookLibraryApp.Books.Dto;
+using BookLibraryApp.Books.Mapper;
 using BookLibraryApp.Books.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BookLibraryApp.CustomExceptions;
+using BookLibraryApp.DataBase;
+using BookLibraryApp.HelperInterfaces;
 
 namespace BookLibraryApp.Books.Service
 {
     public class BookService : IBookService
     {
-        public Book AddBook(BookDto dto)
+        private readonly BookAppContext _context;
+        private readonly IMapper<Book, BookDto> _mapper;
+
+        public BookService(BookAppContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _mapper = new BookMapper();
+        }
+        public async Task<Book> AddBook(BookDto dto)
+        {
+            Book book = _mapper.ToDomain(dto);
+            await _context.Books.AddAsync(book);
+            await _context.SaveChangesAsync();
+            return book;
         }
 
-        public void DeleteBook(int id)
+        public async void DeleteBook(int id)
         {
-            throw new NotImplementedException();
+            var book = GetBookById(id);
+            _context.Books.Remove(book);
+            await _context.SaveChangesAsync();
         }
 
         public Book GetBookById(int id)
         {
-            throw new NotImplementedException();
+            Book book = _context.Books.FirstOrDefault(x => x.Id.Equals(id));
+            if (book == null)
+            {
+                throw new NotFoundException($"Книга с id {id} не найдена");
+            }
+            return book;
         }
 
         public List<Book> GetBooks()
         {
-            throw new NotImplementedException();
+            return _context.Books.ToList();
         }
 
-        public Book ReturnBookFromRent(int id)
+        public async Task<Book> ReturnBookFromRent(int id)
         {
-            throw new NotImplementedException();
+            var book = GetBookById(id);
+            book.IsAlreadyTaken = true;
+            await _context.SaveChangesAsync();
+            return book;
         }
 
-        public Book TakeBookToRent(int id)
+        public async Task<Book> TakeBookToRent(int id)
         {
-            throw new NotImplementedException();
+            var book = GetBookById(id);
+            if (book.IsAlreadyTaken)
+            {
+                throw new AlreadyRentedException();
+            }
+            book.IsAlreadyTaken = true;
+            await _context.SaveChangesAsync();
+            return book;
         }
 
-        public Book UpdateBook(BookDto dto)
+        public async Task<Book> UpdateBook(int id, BookDto dto)
         {
-            throw new NotImplementedException();
+            var book = GetBookById(id);
+            book.Name = dto.Name;
+            book.PublishingYear = dto.PublishingYear;
+            await _context.SaveChangesAsync();
+            return book;
         }
     }
 }

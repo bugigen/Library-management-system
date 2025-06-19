@@ -10,8 +10,8 @@ namespace BookLibraryApp.Books.Dto
     {
         private string name;
         private int publishingYear;
-        private int authorId;
-        private int genreId;
+        private string author;
+        private string genre;
 
         public string Name
         {
@@ -31,7 +31,7 @@ namespace BookLibraryApp.Books.Dto
             get { return publishingYear; }
             set
             {
-                if(value < -2600 || value > DateTime.Now.Year)
+                if (value < -2600 || value > DateTime.Now.Year)
                 {
                     throw new ArgumentException("Невалидный год издания книги");
                 }
@@ -39,38 +39,38 @@ namespace BookLibraryApp.Books.Dto
             }
         }
 
-        public int AuthorId
+        public string Author
         {
-            get { return authorId; }
+            get { return author; }
             set
             {
-                if(value < 0)
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Id не может быть меньше нуля");
                 }
-                authorId = value;
+                author = value;
             }
         }
 
-        public int GenreId
+        public string Genre
         {
-            get { return genreId; }
+            get { return genre; }
             set
             {
-                if (value < 0)
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Id не может быть меньше нуля");
                 }
-                genreId = value;
+                genre = value;
             }
         }
 
-        public BookDto(string name, int publishingYear, int authorId, int genreId)
+        public BookDto(string name, int publishingYear, string author, string genre)
         {
             Name = name;
             PublishingYear = publishingYear;
-            AuthorId = authorId;
-            GenreId = genreId;
+            Author = author;
+            Genre = genre;
         }
     }
 }
