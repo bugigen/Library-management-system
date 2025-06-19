@@ -1,104 +1,75 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
+using System.IO;
 
 namespace BookLibraryApp
 {
-    //internal class DatabaseService
-    //{
-    //    private readonly string _connectionString;
+    public class DatabaseService
+    {
+        private const string DatabaseFile = "libraryDatabase.db";
 
-    //    public DatabaseService(string databasePath = "bookLibrary.db")
-    //    {
-    //        _connectionString = new SqliteConnectionStringBuilder
-    //        {
-    //            DataSource = databasePath,
-    //            Mode = SqliteOpenMode.ReadWriteCreate
-    //        }.ToString();
-    //    }
+        public SqliteConnection Connection { get; set; }
 
-    //    public void InitializeDatabase()
-    //    {
-    //        using (var connection = new SqliteConnection(_connectionString))
-    //        {
-    //            connection.Open();
+        public DatabaseService()
+        {
+            bool isNewDatabase = File.Exists(DatabaseFile) == false;
 
-    //            var command = connection.CreateCommand();
+            Connection = new SqliteConnection($"Data Source={DatabaseFile}");
 
-    //            command.CommandText = """
-    //                CREATE TABLE IF NOT EXISTS Books (
-    //                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-    //                    Title TEXT NOT NULL,
-    //                    Author TEXT NOT NULL,
-    //                    Year INTEGER NOT NULL,
-    //                    Genre TEXT NOT NULL,
-    //                    Status TEXT NOT NULL DEFAULT 'доступна'
-    //                );
-    //                """;
+            Connection.Open();
 
-    //            command.ExecuteNonQuery();
-    //        }
-    //    }
+            if (isNewDatabase)
+                CreateTables();
+        }
 
-    //    public void AddBook(int id,
-    //                        string title,
-    //                        string author,
-    //                        int year,
-    //                        string genre,
-    //                        string status)
-    //    {
-    //        using (var connection = new SqliteConnection(_connectionString))
-    //        {
-    //            connection.Open();
+        private void CreateTables()
+        {
+            using (var command = Connection.CreateCommand())
+            {
+                command.CommandText = """
+                CREATE TABLE Books (
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Title TEXT NOT NULL,
+                    Author TEXT NOT NULL,
+                    Year INTEGER NOT NULL,
+                    Genre TEXT NOT NULL,
+                    Status TEXT NOT NULL CHECK(Status IN ('доступна', 'взята')
+                )
+                """;
 
-    //            var command = connection.CreateCommand();
-    //            command.CommandText = """
-    //                INSERT INTO Books (
-    //                    Id, Title, Author, Year, Genre, Status
-    //                ) 
-    //                VALUES (
-    //                    $id, $title, $author, $year, $genre, $status
-    //                );
-    //                """;
+                command.ExecuteNonQuery();
+            }
 
-    //            command.Parameters.AddWithValue("$id", id);
-    //            command.Parameters.AddWithValue("$title", title);
-    //            command.Parameters.AddWithValue("$author", author);
-    //            command.Parameters.AddWithValue("$year", year);
-    //            command.Parameters.AddWithValue("$genre", genre);
-    //            command.Parameters.AddWithValue("$status", status);
+            using (var command = Connection.CreateCommand())
+            {
+                command.CommandText = """
+                CREATE TABLE Readers (
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    FirstName TEXT NOT NULL,
+                    LastName TEXT NOT NULL
+                )
+                """;
 
-    //            command.ExecuteNonQuery();
-    //        }
-    //    }
+                command.ExecuteNonQuery();
+            }
 
-    //    public List<Book> ShowAllBooks()
-    //    {
-    //        var books = new List<Book>();
-
-    //        using (var connection = new SqliteConnection(_connectionString))
-    //        {
-    //            connection.Open();
-
-    //            var command = connection.CreateCommand();
-    //            command.CommandText = "SELECT * FROM Books";
-
-    //            using (var reader = command.ExecuteReader())
-    //            {
-    //                while (reader.Read())
-    //                {
-    //                    books.Add(new Book
-    //                    {
-    //                        Id = reader.GetInt32(0),
-    //                        Title = reader.GetString(1),
-    //                        Author = reader.GetString(2),
-    //                        Year = reader.GetInt32(3),
-    //                        Genre = reader.GetString(4),
-    //                        Status = reader.GetString(5),
-    //                    });
-    //                }
-    //            }
-    //        }
-
-    //        return books;
-    //    }
-    //}
+            using (var command = Connection.CreateCommand())
+            {
+                command.CommandText = """
+                CREATE TABLE RentedBooks (
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    BookId INTEGER NOT NULL,
+                    ReaderId INTEGER NOT NULL,
+                    FOREIGN KEY (BookId) REFERENCES Books(Id) ON DELETE CASCADE,
+                    FOREIGN KEY (ReaderId) REFERENCES Readers(Id) ON DELETE CASCADE
+                )
+                """;
+                command.ExecuteNonQuery();
+            }
+        }
+    }
 }

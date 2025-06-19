@@ -24,10 +24,14 @@ namespace BookLibraryApp
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public static Form1 SelfRef { get; set; }
+        private readonly DatabaseService _databaseService;
+
         public Form1()
         {
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
+
+            _databaseService = new DatabaseService();
 
             if (listView1.Columns.Count == 0) return;
 

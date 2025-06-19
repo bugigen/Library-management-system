@@ -9,11 +9,17 @@ namespace BookLibraryApp
         [STAThread]
         public static void Main()
         {
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+
+            DbService = new DatabaseService();
+
             // ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
             BookAppContext context = new BookAppContext();
-            #region Пример добавления новой книги
-            var bookDto = new BookDto("Сказка о царе Салтане", 1831, "Александр Сергеевич Пушкин", "Сказка");
+            #region ������ ���������� ����� �����
+            var bookDto = new BookDto("������ � ���� �������", 1831, "��������� ��������� ������", "������");
             IBookService bookService = new BookService(context);
             var book = bookService.AddBook(bookDto);
             #endregion
@@ -26,19 +32,19 @@ namespace BookLibraryApp
         //    try
         //    {
         //        databaseService.InitializeDatabase();
-        //        Console.WriteLine("База данных успешно создана.");
+        //        Console.WriteLine("���� ������ ������� �������.");
 
-        //        databaseService.AddBook(1, "Название 1", "Автор 1", 1, "Жанр 1", "доступна");
-        //        databaseService.AddBook(2, "Название 2", "Автор 2", 2, "Жанр 2", "доступна");
-        //        databaseService.AddBook(3, "Название 3", "Автор 3", 3, "Жанр 3", "доступна");
+        //        databaseService.AddBook(1, "�������� 1", "����� 1", 1, "���� 1", "��������");
+        //        databaseService.AddBook(2, "�������� 2", "����� 2", 2, "���� 2", "��������");
+        //        databaseService.AddBook(3, "�������� 3", "����� 3", 3, "���� 3", "��������");
 
-        //        Console.WriteLine("Данные добавлены.");
-        //        Console.WriteLine("\nВсе книги:");
+        //        Console.WriteLine("������ ���������.");
+        //        Console.WriteLine("\n��� �����:");
         //        databaseService.ShowAllBooks();
         //    }
         //    catch (Exception ex)
         //    {
-        //        Console.WriteLine($"Ошибка: {ex.Message}");
+        //        Console.WriteLine($"������: {ex.Message}");
         //    }
         //}
     }
