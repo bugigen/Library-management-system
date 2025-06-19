@@ -6,6 +6,8 @@ namespace BookLibraryApp
 {
     internal static class Program
     {
+        public static DatabaseService DbService { get; private set; }
+
         [STAThread]
         public static void Main()
         {

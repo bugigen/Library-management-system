@@ -51,10 +51,10 @@ namespace BookLibraryApp
                     VALUES (@title, @author, @year, @genre, 'доступна')
                     """;
 
-                command.Parameters.AddWithValue("@title", title);
-                command.Parameters.AddWithValue("@author", author);
-                command.Parameters.AddWithValue("@year", int.Parse(age));
-                command.Parameters.AddWithValue("@genre", ganre);
+                command.Parameters.AddWithValue("@title", textBox_title.Text);
+                command.Parameters.AddWithValue("@author", textBox_author.Text);
+                command.Parameters.AddWithValue("@year", int.Parse(textBox_age.Text));
+                command.Parameters.AddWithValue("@genre", textBox_ganre.Text);
 
                 int rowsAffected = command.ExecuteNonQuery();
 
