@@ -125,5 +125,48 @@ namespace BookLibraryApp
 
             }
         }
+
+        private void button_search_Click(object sender, EventArgs e)
+        {
+            List<Book> books = new List<Book>();
+            List<Book> books_out = new List<Book>();
+
+            Search search = new Search(books);
+            string selecte = comboBox1.SelectedItem.ToString();
+            switch (selecte)
+            {
+                case "Название":
+                    books_out = search.FindName(textBox1.Text);
+                    break;
+                case "Автор":
+                    books_out = search.FindAuthor(textBox1.Text);
+                    break;
+                case "Жанр":
+                    books_out = search.FindGenre(textBox1.Text);
+                    break;
+
+                default:
+                    MessageBox.Show("Ты лох");
+                    break;
+            }
+        }
+
+        private void button_true_Click(object sender, EventArgs e)
+        {
+            List<Book> books = new List<Book>();
+            List<Book> books_out = new List<Book>();
+
+            Search search = new Search(books);
+            books_out = search.FindFree();
+        }
+
+        private void button_false_Click(object sender, EventArgs e)
+        {
+            List<Book> books = new List<Book>();
+            List<Book> books_out = new List<Book>();
+
+            Search search = new Search(books);
+            books_out = search.FindBusy();
+        }
     }
 }

@@ -60,6 +60,8 @@
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
             tabPage4 = new TabPage();
+            button_false = new Button();
+            button_true = new Button();
             listView3 = new ListView();
             columnHeader11 = new ColumnHeader();
             columnHeader12 = new ColumnHeader();
@@ -69,7 +71,7 @@
             columnHeader16 = new ColumnHeader();
             label4 = new Label();
             button5 = new Button();
-            button_ = new Button();
+            button_search = new Button();
             label1 = new Label();
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
@@ -385,10 +387,12 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(button_false);
+            tabPage4.Controls.Add(button_true);
             tabPage4.Controls.Add(listView3);
             tabPage4.Controls.Add(label4);
             tabPage4.Controls.Add(button5);
-            tabPage4.Controls.Add(button_);
+            tabPage4.Controls.Add(button_search);
             tabPage4.Controls.Add(label1);
             tabPage4.Controls.Add(comboBox1);
             tabPage4.Controls.Add(textBox1);
@@ -400,12 +404,32 @@
             tabPage4.Text = "tabPage4";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button_false
+            // 
+            button_false.Location = new Point(342, 127);
+            button_false.Name = "button_false";
+            button_false.Size = new Size(140, 23);
+            button_false.TabIndex = 10;
+            button_false.Text = "Выдать занятые";
+            button_false.UseVisualStyleBackColor = true;
+            button_false.Click += button_false_Click;
+            // 
+            // button_true
+            // 
+            button_true.Location = new Point(342, 98);
+            button_true.Name = "button_true";
+            button_true.Size = new Size(140, 23);
+            button_true.TabIndex = 9;
+            button_true.Text = "Выдать свободные";
+            button_true.UseVisualStyleBackColor = true;
+            button_true.Click += button_true_Click;
+            // 
             // listView3
             // 
             listView3.Columns.AddRange(new ColumnHeader[] { columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15, columnHeader16 });
-            listView3.Location = new Point(15, 103);
+            listView3.Location = new Point(15, 180);
             listView3.Name = "listView3";
-            listView3.Size = new Size(484, 204);
+            listView3.Size = new Size(484, 138);
             listView3.TabIndex = 8;
             listView3.UseCompatibleStateImageBehavior = false;
             listView3.View = View.Details;
@@ -456,7 +480,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(178, 324);
+            button5.Location = new Point(178, 335);
             button5.Name = "button5";
             button5.Size = new Size(149, 27);
             button5.TabIndex = 6;
@@ -464,14 +488,15 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += button_back_menu_Click;
             // 
-            // button_
+            // button_search
             // 
-            button_.Location = new Point(342, 69);
-            button_.Name = "button_";
-            button_.Size = new Size(88, 23);
-            button_.TabIndex = 5;
-            button_.Text = "Искать";
-            button_.UseVisualStyleBackColor = true;
+            button_search.Location = new Point(342, 69);
+            button_search.Name = "button_search";
+            button_search.Size = new Size(140, 23);
+            button_search.TabIndex = 5;
+            button_search.Text = "Искать";
+            button_search.UseVisualStyleBackColor = true;
+            button_search.Click += button_search_Click;
             // 
             // label1
             // 
@@ -665,7 +690,7 @@
         private Button button2;
         private Button button3;
         private TabPage tabPage4;
-        private Button button_;
+        private Button button_search;
         private Label label1;
         private TextBox textBox1;
         public ComboBox comboBox1;
@@ -699,5 +724,7 @@
         private ColumnHeader columnHeader14;
         private ColumnHeader columnHeader15;
         private ColumnHeader columnHeader16;
+        private Button button_true;
+        private Button button_false;
     }
 }
