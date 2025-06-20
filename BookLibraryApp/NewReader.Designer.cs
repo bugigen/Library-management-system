@@ -31,10 +31,11 @@
             button_add = new Button();
             label3 = new Label();
             label2 = new Label();
-            textBox_age = new TextBox();
-            textBox_title = new TextBox();
-            textBox_author = new TextBox();
+            textBox_book = new TextBox();
+            textBox_lastname = new TextBox();
+            textBox_firstname = new TextBox();
             label1 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // button_add
@@ -46,12 +47,13 @@
             button_add.TabIndex = 26;
             button_add.Text = "Добавить";
             button_add.UseVisualStyleBackColor = true;
+            button_add.Click += button_add_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(17, 113);
+            label3.Location = new Point(17, 89);
             label3.Name = "label3";
             label3.Size = new Size(105, 21);
             label3.TabIndex = 24;
@@ -61,55 +63,65 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(47, 70);
+            label2.Location = new Point(47, 46);
             label2.Name = "label2";
             label2.Size = new Size(75, 21);
             label2.TabIndex = 23;
             label2.Text = "Фамилия";
             // 
-            // textBox_age
+            // textBox_book
             // 
-            textBox_age.Location = new Point(131, 101);
-            textBox_age.Multiline = true;
-            textBox_age.Name = "textBox_age";
-            textBox_age.Size = new Size(212, 44);
-            textBox_age.TabIndex = 21;
+            textBox_book.Location = new Point(131, 77);
+            textBox_book.Multiline = true;
+            textBox_book.Name = "textBox_book";
+            textBox_book.Size = new Size(212, 44);
+            textBox_book.TabIndex = 21;
             // 
-            // textBox_title
+            // textBox_lastname
             // 
-            textBox_title.Location = new Point(131, 72);
-            textBox_title.Name = "textBox_title";
-            textBox_title.Size = new Size(212, 23);
-            textBox_title.TabIndex = 20;
+            textBox_lastname.Location = new Point(131, 48);
+            textBox_lastname.Name = "textBox_lastname";
+            textBox_lastname.Size = new Size(212, 23);
+            textBox_lastname.TabIndex = 20;
             // 
-            // textBox_author
+            // textBox_firstname
             // 
-            textBox_author.Location = new Point(131, 43);
-            textBox_author.Name = "textBox_author";
-            textBox_author.Size = new Size(212, 23);
-            textBox_author.TabIndex = 19;
+            textBox_firstname.Location = new Point(131, 19);
+            textBox_firstname.Name = "textBox_firstname";
+            textBox_firstname.Size = new Size(212, 23);
+            textBox_firstname.TabIndex = 19;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(81, 41);
+            label1.Location = new Point(81, 17);
             label1.Name = "label1";
             label1.Size = new Size(41, 21);
             label1.TabIndex = 18;
             label1.Text = "Имя";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(131, 124);
+            label4.Name = "label4";
+            label4.Size = new Size(164, 15);
+            label4.TabIndex = 27;
+            label4.Text = "через запятую без пробелов";
             // 
             // NewReader
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(368, 209);
+            Controls.Add(label4);
             Controls.Add(button_add);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(textBox_age);
-            Controls.Add(textBox_title);
-            Controls.Add(textBox_author);
+            Controls.Add(textBox_book);
+            Controls.Add(textBox_lastname);
+            Controls.Add(textBox_firstname);
             Controls.Add(label1);
             Name = "NewReader";
             Text = "Новый читатель";
@@ -122,9 +134,10 @@
         private Button button_add;
         private Label label3;
         private Label label2;
-        private TextBox textBox_age;
-        private TextBox textBox_title;
-        private TextBox textBox_author;
+        private TextBox textBox_book;
+        private TextBox textBox_lastname;
+        private TextBox textBox_firstname;
         private Label label1;
+        private Label label4;
     }
 }

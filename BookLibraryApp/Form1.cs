@@ -72,19 +72,23 @@ namespace BookLibraryApp
 
         private void button_new_book_Click(object sender, EventArgs e)
         {
-            AddNewBook addNewBook = new AddNewBook(1, SelfRef);
+            AddNewBook addNewBook = new AddNewBook(SelfRef);
             addNewBook.Show();
         }
 
         private void button_edit_book_Click(object sender, EventArgs e)
         {
-            EditBook editBook = new EditBook();
+            ListViewItem selectedItem = listView1.SelectedItems[0];
+            int id = Convert.ToInt32(selectedItem.SubItems[0].Text);
+            BookService serv = new BookService();
+            Book editbook = serv.GetBookById(id);
+            EditBook editBook = new EditBook(editbook, SelfRef);
             editBook.Show();
         }
 
         private void button_new_reader_Click(object sender, EventArgs e)
         {
-            NewReader newReader = new NewReader();
+            NewReader newReader = new NewReader(SelfRef);
             newReader.Show();
         }
 
@@ -167,6 +171,14 @@ namespace BookLibraryApp
 
             Search search = new Search(books);
             books_out = search.FindBusy();
+        }
+
+        private void button_delet_book_Click(object sender, EventArgs e)
+        {
+            ListViewItem selectedItem = listView1.SelectedItems[0];
+            int id = Convert.ToInt32(selectedItem.SubItems[0].Text);
+            BookService serv = new BookService();
+            serv.DeleteBook(id);
         }
     }
 }

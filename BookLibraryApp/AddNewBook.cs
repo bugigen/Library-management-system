@@ -14,11 +14,10 @@ namespace BookLibraryApp
 {
     public partial class AddNewBook : Form
     {
-        int idel;
-        public AddNewBook(int id, Form1 ParentRef)
+
+        public AddNewBook(Form1 ParentRef)
         {
             InitializeComponent();
-            idel = id;
         }
 
         private void button_add_Click(object sender, EventArgs e)
@@ -87,12 +86,6 @@ namespace BookLibraryApp
             }
 
             //BookDto book = new BookDto(idel, author, title, age, ganre, "free");
-
-
-            if (idel != 0)
-            {
-                Form1.SelfRef.closeAddNewBook();
-            }
         }
     }
 }

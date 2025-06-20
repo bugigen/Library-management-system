@@ -244,6 +244,7 @@
             button_delet_book.TabIndex = 3;
             button_delet_book.Text = "Удаление книги";
             button_delet_book.UseVisualStyleBackColor = true;
+            button_delet_book.Click += button_delet_book_Click;
             // 
             // button_edit_book
             // 
