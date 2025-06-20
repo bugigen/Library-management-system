@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using BookLibraryApp.Models;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookLibraryApp.Books.Models
 {
@@ -28,6 +30,10 @@ namespace BookLibraryApp.Books.Models
         [DefaultValue(false)]
         public bool IsAlreadyTaken { get; set; }
 
+        [ForeignKey("CurrentReader")] 
+        public int? CurrentReaderId { get; set; } 
+
+        public Reader CurrentReader { get; set; } 
 
         public Book(string name, int publishingYear, string author, string genre, bool isAlreadyTaken)
         {
