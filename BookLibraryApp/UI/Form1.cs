@@ -31,6 +31,21 @@ namespace BookLibraryApp
                 listView1.Columns[i].Width = totalWidth / columnCount;
             }
             SelfRef = this;
+
+            byte[] iconBytes = Properties.Resources.free_icon_digital_library_7398682; 
+
+            using (var memoryStream = new MemoryStream(iconBytes))
+            {
+                try
+                {
+                    Icon icon = new Icon(memoryStream);
+                    this.Icon = icon;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось загрузить иконку: " + ex.Message);
+                }
+            }
         }
 
         private void button_show_book_Click(object sender, EventArgs e)

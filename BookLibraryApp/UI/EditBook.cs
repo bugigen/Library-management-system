@@ -15,6 +15,21 @@ namespace BookLibraryApp
             textBox_ganre.Text = book.Genre;
             textBox_title.Text = book.Title;
             textBox_age.Text = book.Year.ToString();
+
+            byte[] iconBytes = Properties.Resources.free_icon_digital_library_7398682;
+
+            using (var memoryStream = new MemoryStream(iconBytes))
+            {
+                try
+                {
+                    Icon icon = new Icon(memoryStream);
+                    this.Icon = icon;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось загрузить иконку: " + ex.Message);
+                }
+            }
         }
 
         private void button_edit_Click(object sender, EventArgs e)

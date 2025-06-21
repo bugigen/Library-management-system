@@ -109,19 +109,26 @@
             // 
             // button_add
             // 
+            button_add.BackColor = Color.LightBlue;
+            button_add.FlatAppearance.BorderColor = Color.MintCream;
+            button_add.FlatAppearance.BorderSize = 0;
+            button_add.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_add.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_add.FlatStyle = FlatStyle.Flat;
             button_add.Font = new Font("Segoe UI", 12F);
             button_add.Location = new Point(165, 150);
             button_add.Name = "button_add";
             button_add.Size = new Size(116, 32);
             button_add.TabIndex = 8;
             button_add.Text = "Добавить";
-            button_add.UseVisualStyleBackColor = true;
+            button_add.UseVisualStyleBackColor = false;
             button_add.Click += button_add_Click;
             // 
             // AddNewBook
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Window;
             ClientSize = new Size(368, 209);
             Controls.Add(button_add);
             Controls.Add(label4);

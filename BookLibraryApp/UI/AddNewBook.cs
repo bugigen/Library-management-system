@@ -13,6 +13,21 @@ namespace BookLibraryApp
         public AddNewBook(Form1 ParentRef)
         {
             InitializeComponent();
+
+            byte[] iconBytes = Properties.Resources.free_icon_digital_library_7398682;
+
+            using (var memoryStream = new MemoryStream(iconBytes))
+            {
+                try
+                {
+                    Icon icon = new Icon(memoryStream);
+                    this.Icon = icon;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось загрузить иконку: " + ex.Message);
+                }
+            }
         }
 
         private void button_add_Click(object sender, EventArgs e)
