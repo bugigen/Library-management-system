@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BookLibraryApp.Books.Dto;
-using BookLibraryApp.Books.Models;
-using BookLibraryApp.Books.Service;
+﻿using System.ComponentModel;
+using BookLibraryApp.Domain.Models;
+using BookLibraryApp.Logic.Service.BooksService;
+using BookLibraryApp.Logic.Service.SearchService;
+using BookLibraryApp.Domain.DTO;
 
 namespace BookLibraryApp
 {
@@ -20,8 +13,8 @@ namespace BookLibraryApp
             InitializeComponent();
             textBox_author.Text = book.Author;
             textBox_ganre.Text = book.Genre;
-            textBox_title.Text = book.Name;
-            textBox_age.Text = book.PublishingYear.ToString();
+            textBox_title.Text = book.Title;
+            textBox_age.Text = book.Year.ToString();
         }
 
         private void button_edit_Click(object sender, EventArgs e)

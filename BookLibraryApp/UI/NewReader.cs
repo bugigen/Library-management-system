@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using BookLibraryApp.Books.Dto;
-using BookLibraryApp.Books.Models;
-using BookLibraryApp.Books.Service;
+﻿using System.ComponentModel;
+using BookLibraryApp.Domain.Models;
+using BookLibraryApp.Logic.Service.BooksService;
+using BookLibraryApp.Logic.Service.SearchService;
+using BookLibraryApp.Domain.DTO;
 
 namespace BookLibraryApp
 {
@@ -30,25 +21,25 @@ namespace BookLibraryApp
             string[] BookList_2 = BookList.Split(',');
 
             //List<Book> books = new List<Book>;
-            BookService bookService = new BookService();
-            List<Book> books = bookService.GetBooks();
-            List<Book> books_search;
+            //BookService bookService = new BookService();
+            //List<Book> books = bookService.GetBooks();
+            //List<Book> books_search;
 
-            Search search = new Search(books);
+            //Search search = new Search(books);
 
-            for(int i = 0; i < BookList_2.Length; i++)
-            {
-                books_search = search.FindName(BookList_2[i]);
-                //books_search.Add(search.FindName(BookList));
+            //for (int i = 0; i < BookList_2.Length; i++)
+            //{
+            //    books_search = search.FindName(BookList_2[i]);
+            //    //books_search.Add(search.FindName(BookList));
 
-            }
-            
+            //}
+
             try
             {
                 Reader book = new Reader();
                 book.FirstName = FirstName;
                 book.LastName = LastName;
-                book.RentedBooks = books_search;
+                //book.RentedBooks = books_search;
             }
             //catch (ArgumentException ex)
             //{

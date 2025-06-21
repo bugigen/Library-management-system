@@ -1,14 +1,9 @@
-﻿using BookLibraryApp.Books.Dto;
-using Microsoft.Data.Sqlite;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.Data.Sqlite;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using BookLibraryApp.Domain.Models;
+using BookLibraryApp.Logic.Service.BooksService;
+using BookLibraryApp.Logic.Service.SearchService;
+using BookLibraryApp.Domain.DTO;
 
 namespace BookLibraryApp
 {
@@ -54,36 +49,31 @@ namespace BookLibraryApp
                 return;
             }
 
+            //using (var command = new SqliteCommand())
+            //{
+            //    command.Connection = Program.DbService.Connection;
+            //    command.CommandText = """
+            //        INSERT INTO Books (Title, Author, Year, Genre, Status) 
+            //        VALUES (@title, @author, @year, @genre, 'доступна')
+            //        """;
 
+            //    command.Parameters.AddWithValue("@title", textBox_title.Text);
+            //    command.Parameters.AddWithValue("@author", textBox_author.Text);
+            //    command.Parameters.AddWithValue("@year", int.Parse(textBox_age.Text));
+            //    command.Parameters.AddWithValue("@genre", textBox_ganre.Text);
 
-            //BookService bookService = new BookService();
-            //bookService.AddBook(book);
+            //    int rowsAffected = command.ExecuteNonQuery();
 
-            using (var command = new SqliteCommand())
-            {
-                command.Connection = Program.DbService.Connection;
-                command.CommandText = """
-                    INSERT INTO Books (Title, Author, Year, Genre, Status) 
-                    VALUES (@title, @author, @year, @genre, 'доступна')
-                    """;
-
-                command.Parameters.AddWithValue("@title", textBox_title.Text);
-                command.Parameters.AddWithValue("@author", textBox_author.Text);
-                command.Parameters.AddWithValue("@year", int.Parse(textBox_age.Text));
-                command.Parameters.AddWithValue("@genre", textBox_ganre.Text);
-
-                int rowsAffected = command.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
-                {
-                    MessageBox.Show("Книга успешно добавлена.");
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Не удалось добавить книгу.");
-                }
-            }
+            //    if (rowsAffected > 0)
+            //    {
+            //        MessageBox.Show("Книга успешно добавлена.");
+            //        this.Close();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Не удалось добавить книгу.");
+            //    }
+            //}
 
             //BookDto book = new BookDto(idel, author, title, age, ganre, "free");
         }

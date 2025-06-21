@@ -76,6 +76,7 @@
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             tabPage5 = new TabPage();
+            label7 = new Label();
             label5 = new Label();
             button6 = new Button();
             button_back = new Button();
@@ -104,12 +105,12 @@
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(0, 0);
+            tabControl1.Location = new Point(-12, -29);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(528, 410);
+            tabControl1.Size = new Size(547, 450);
             tabControl1.TabIndex = 0;
+            tabControl1.TabStop = false;
             // 
             // tabPage1
             // 
@@ -121,7 +122,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(520, 382);
+            tabPage1.Size = new Size(539, 422);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "tabPage1";
             tabPage1.UseVisualStyleBackColor = true;
@@ -130,7 +131,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 20F);
-            label6.Location = new Point(35, 35);
+            label6.Location = new Point(54, 35);
             label6.Name = "label6";
             label6.Size = new Size(445, 37);
             label6.TabIndex = 7;
@@ -138,42 +139,74 @@
             // 
             // button3
             // 
-            button3.Location = new Point(87, 184);
+            button3.BackColor = Color.LightBlue;
+            button3.FlatAppearance.BorderColor = Color.MintCream;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.CheckedBackColor = Color.SteelBlue;
+            button3.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button3.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Location = new Point(97, 194);
             button3.Name = "button3";
             button3.Size = new Size(156, 57);
             button3.TabIndex = 3;
-            button3.Text = "Выдача и возврат книг";
-            button3.UseVisualStyleBackColor = true;
+            button3.TabStop = false;
+            button3.Text = "ВЫДАЧА И ВОЗВРАТ";
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(271, 184);
+            button2.BackColor = Color.LightBlue;
+            button2.FlatAppearance.BorderColor = Color.MintCream;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.CheckedBackColor = Color.SteelBlue;
+            button2.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button2.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(281, 194);
             button2.Name = "button2";
             button2.Size = new Size(156, 57);
             button2.TabIndex = 2;
-            button2.Text = "Поиск книги";
-            button2.UseVisualStyleBackColor = true;
+            button2.TabStop = false;
+            button2.Text = "ПОИСК КНИГ";
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(271, 108);
+            button1.BackColor = Color.LightBlue;
+            button1.FlatAppearance.BorderColor = Color.MintCream;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.CheckedBackColor = Color.SteelBlue;
+            button1.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button1.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(281, 118);
             button1.Name = "button1";
             button1.Size = new Size(156, 57);
             button1.TabIndex = 1;
-            button1.Text = "Список читателей";
-            button1.UseVisualStyleBackColor = true;
+            button1.TabStop = false;
+            button1.Text = "СПИСОК ЧИТАТЕЛЕЙ";
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button_show_book
             // 
-            button_show_book.Location = new Point(87, 108);
+            button_show_book.BackColor = Color.LightBlue;
+            button_show_book.FlatAppearance.BorderColor = Color.MintCream;
+            button_show_book.FlatAppearance.BorderSize = 0;
+            button_show_book.FlatAppearance.CheckedBackColor = Color.SteelBlue;
+            button_show_book.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_show_book.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_show_book.FlatStyle = FlatStyle.Flat;
+            button_show_book.Location = new Point(97, 118);
             button_show_book.Name = "button_show_book";
             button_show_book.Size = new Size(156, 57);
             button_show_book.TabIndex = 0;
-            button_show_book.Text = "Список книг";
-            button_show_book.UseVisualStyleBackColor = true;
+            button_show_book.TabStop = false;
+            button_show_book.Text = "СПИСОК КНИГ";
+            button_show_book.UseVisualStyleBackColor = false;
             button_show_book.Click += button_show_book_Click;
             // 
             // tabPage2
@@ -189,27 +222,33 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(520, 382);
+            tabPage2.Size = new Size(539, 422);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
-            button7.Location = new Point(333, 328);
+            button7.BackColor = Color.LightBlue;
+            button7.FlatAppearance.BorderColor = Color.MintCream;
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button7.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Location = new Point(352, 365);
             button7.Name = "button7";
             button7.Size = new Size(149, 27);
             button7.TabIndex = 7;
             button7.TabStop = false;
             button7.Text = "Выдача/возврат";
-            button7.UseVisualStyleBackColor = true;
+            button7.UseVisualStyleBackColor = false;
             button7.Click += button3_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 20F);
-            label2.Location = new Point(137, 12);
+            label2.Location = new Point(165, 14);
             label2.Name = "label2";
             label2.Size = new Size(228, 37);
             label2.TabIndex = 6;
@@ -217,53 +256,87 @@
             // 
             // button_search_2
             // 
-            button_search_2.Location = new Point(23, 328);
+            button_search_2.BackColor = Color.LightBlue;
+            button_search_2.FlatAppearance.BorderColor = Color.MintCream;
+            button_search_2.FlatAppearance.BorderSize = 0;
+            button_search_2.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_search_2.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_search_2.FlatStyle = FlatStyle.Flat;
+            button_search_2.Location = new Point(42, 365);
             button_search_2.Name = "button_search_2";
             button_search_2.Size = new Size(149, 27);
             button_search_2.TabIndex = 5;
             button_search_2.TabStop = false;
             button_search_2.Text = "Поиск";
-            button_search_2.UseVisualStyleBackColor = true;
+            button_search_2.UseVisualStyleBackColor = false;
             button_search_2.Click += button_search_2_Click;
             // 
             // button_back_menu
             // 
-            button_back_menu.Location = new Point(178, 328);
+            button_back_menu.BackColor = Color.LightBlue;
+            button_back_menu.FlatAppearance.BorderColor = Color.MintCream;
+            button_back_menu.FlatAppearance.BorderSize = 0;
+            button_back_menu.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_back_menu.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_back_menu.FlatStyle = FlatStyle.Flat;
+            button_back_menu.Location = new Point(197, 365);
             button_back_menu.Name = "button_back_menu";
             button_back_menu.Size = new Size(149, 27);
             button_back_menu.TabIndex = 4;
+            button_back_menu.TabStop = false;
             button_back_menu.Text = "Назад в меню";
-            button_back_menu.UseVisualStyleBackColor = true;
+            button_back_menu.UseVisualStyleBackColor = false;
             button_back_menu.Click += button_back_menu_Click;
             // 
             // button_delet_book
             // 
-            button_delet_book.Location = new Point(333, 279);
+            button_delet_book.BackColor = Color.LightBlue;
+            button_delet_book.FlatAppearance.BorderColor = Color.MintCream;
+            button_delet_book.FlatAppearance.BorderSize = 0;
+            button_delet_book.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_delet_book.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_delet_book.FlatStyle = FlatStyle.Flat;
+            button_delet_book.Location = new Point(352, 316);
             button_delet_book.Name = "button_delet_book";
             button_delet_book.Size = new Size(149, 29);
             button_delet_book.TabIndex = 3;
+            button_delet_book.TabStop = false;
             button_delet_book.Text = "Удаление книги";
-            button_delet_book.UseVisualStyleBackColor = true;
+            button_delet_book.UseVisualStyleBackColor = false;
             button_delet_book.Click += button_delet_book_Click;
             // 
             // button_edit_book
             // 
-            button_edit_book.Location = new Point(178, 279);
+            button_edit_book.BackColor = Color.LightBlue;
+            button_edit_book.FlatAppearance.BorderColor = Color.MintCream;
+            button_edit_book.FlatAppearance.BorderSize = 0;
+            button_edit_book.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_edit_book.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_edit_book.FlatStyle = FlatStyle.Flat;
+            button_edit_book.Location = new Point(197, 316);
             button_edit_book.Name = "button_edit_book";
             button_edit_book.Size = new Size(149, 29);
             button_edit_book.TabIndex = 2;
+            button_edit_book.TabStop = false;
             button_edit_book.Text = "Редактирование книги";
-            button_edit_book.UseVisualStyleBackColor = true;
+            button_edit_book.UseVisualStyleBackColor = false;
             button_edit_book.Click += button_edit_book_Click;
             // 
             // button_new_book
             // 
-            button_new_book.Location = new Point(23, 279);
+            button_new_book.BackColor = Color.LightBlue;
+            button_new_book.FlatAppearance.BorderColor = Color.MintCream;
+            button_new_book.FlatAppearance.BorderSize = 0;
+            button_new_book.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_new_book.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_new_book.FlatStyle = FlatStyle.Flat;
+            button_new_book.Location = new Point(42, 316);
             button_new_book.Name = "button_new_book";
             button_new_book.Size = new Size(149, 29);
             button_new_book.TabIndex = 1;
+            button_new_book.TabStop = false;
             button_new_book.Text = "Добавить новую книгу";
-            button_new_book.UseVisualStyleBackColor = true;
+            button_new_book.UseVisualStyleBackColor = false;
             button_new_book.Click += button_new_book_Click;
             // 
             // listView1
@@ -271,7 +344,7 @@
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
             listView1.Location = new Point(17, 69);
             listView1.Name = "listView1";
-            listView1.Size = new Size(484, 204);
+            listView1.Size = new Size(507, 233);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -291,7 +364,7 @@
             // 
             columnHeader3.Text = "Название";
             columnHeader3.TextAlign = HorizontalAlignment.Center;
-            columnHeader3.Width = 150;
+            columnHeader3.Width = 170;
             // 
             // columnHeader4
             // 
@@ -319,7 +392,7 @@
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(520, 382);
+            tabPage3.Size = new Size(539, 422);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "tabPage3";
             tabPage3.UseVisualStyleBackColor = true;
@@ -336,22 +409,36 @@
             // 
             // button4
             // 
-            button4.Location = new Point(179, 334);
+            button4.BackColor = Color.LightBlue;
+            button4.FlatAppearance.BorderColor = Color.MintCream;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button4.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Location = new Point(180, 367);
             button4.Name = "button4";
-            button4.Size = new Size(149, 27);
+            button4.Size = new Size(186, 27);
             button4.TabIndex = 5;
+            button4.TabStop = false;
             button4.Text = "Назад в меню";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button_back_menu_Click;
             // 
             // button_new_reader
             // 
-            button_new_reader.Location = new Point(179, 281);
+            button_new_reader.BackColor = Color.LightBlue;
+            button_new_reader.FlatAppearance.BorderColor = Color.MintCream;
+            button_new_reader.FlatAppearance.BorderSize = 0;
+            button_new_reader.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_new_reader.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_new_reader.FlatStyle = FlatStyle.Flat;
+            button_new_reader.Location = new Point(180, 314);
             button_new_reader.Name = "button_new_reader";
-            button_new_reader.Size = new Size(149, 38);
+            button_new_reader.Size = new Size(186, 38);
             button_new_reader.TabIndex = 2;
+            button_new_reader.TabStop = false;
             button_new_reader.Text = "Регистрация нового читателя";
-            button_new_reader.UseVisualStyleBackColor = true;
+            button_new_reader.UseVisualStyleBackColor = false;
             button_new_reader.Click += button_new_reader_Click;
             // 
             // listView2
@@ -359,7 +446,7 @@
             listView2.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader8, columnHeader9, columnHeader10 });
             listView2.Location = new Point(19, 62);
             listView2.Name = "listView2";
-            listView2.Size = new Size(478, 204);
+            listView2.Size = new Size(505, 233);
             listView2.TabIndex = 1;
             listView2.UseCompatibleStateImageBehavior = false;
             listView2.View = View.Details;
@@ -384,7 +471,7 @@
             // 
             columnHeader10.Text = "Список взятых книг";
             columnHeader10.TextAlign = HorizontalAlignment.Center;
-            columnHeader10.Width = 210;
+            columnHeader10.Width = 250;
             // 
             // tabPage4
             // 
@@ -400,29 +487,45 @@
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(520, 382);
+            tabPage4.Size = new Size(539, 422);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "tabPage4";
             tabPage4.UseVisualStyleBackColor = true;
             // 
             // button_false
             // 
-            button_false.Location = new Point(342, 127);
+            button_false.BackColor = Color.LightBlue;
+            button_false.FlatAppearance.BorderColor = Color.MintCream;
+            button_false.FlatAppearance.BorderSize = 0;
+            button_false.FlatAppearance.CheckedBackColor = Color.SteelBlue;
+            button_false.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_false.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_false.FlatStyle = FlatStyle.Flat;
+            button_false.Location = new Point(360, 136);
             button_false.Name = "button_false";
             button_false.Size = new Size(140, 23);
             button_false.TabIndex = 10;
+            button_false.TabStop = false;
             button_false.Text = "Выдать занятые";
-            button_false.UseVisualStyleBackColor = true;
+            button_false.UseVisualStyleBackColor = false;
             button_false.Click += button_false_Click;
             // 
             // button_true
             // 
-            button_true.Location = new Point(342, 98);
+            button_true.BackColor = Color.LightBlue;
+            button_true.FlatAppearance.BorderColor = Color.MintCream;
+            button_true.FlatAppearance.BorderSize = 0;
+            button_true.FlatAppearance.CheckedBackColor = Color.SteelBlue;
+            button_true.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_true.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_true.FlatStyle = FlatStyle.Flat;
+            button_true.Location = new Point(360, 107);
             button_true.Name = "button_true";
             button_true.Size = new Size(140, 23);
             button_true.TabIndex = 9;
+            button_true.TabStop = false;
             button_true.Text = "Выдать свободные";
-            button_true.UseVisualStyleBackColor = true;
+            button_true.UseVisualStyleBackColor = false;
             button_true.Click += button_true_Click;
             // 
             // listView3
@@ -430,7 +533,7 @@
             listView3.Columns.AddRange(new ColumnHeader[] { columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15, columnHeader16 });
             listView3.Location = new Point(15, 180);
             listView3.Name = "listView3";
-            listView3.Size = new Size(484, 138);
+            listView3.Size = new Size(509, 163);
             listView3.TabIndex = 8;
             listView3.UseCompatibleStateImageBehavior = false;
             listView3.View = View.Details;
@@ -450,7 +553,7 @@
             // 
             columnHeader13.Text = "Название";
             columnHeader13.TextAlign = HorizontalAlignment.Center;
-            columnHeader13.Width = 150;
+            columnHeader13.Width = 170;
             // 
             // columnHeader14
             // 
@@ -473,7 +576,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 20F);
-            label4.Location = new Point(165, 17);
+            label4.Location = new Point(185, 17);
             label4.Name = "label4";
             label4.Size = new Size(171, 37);
             label4.TabIndex = 7;
@@ -481,28 +584,44 @@
             // 
             // button5
             // 
-            button5.Location = new Point(178, 335);
+            button5.BackColor = Color.LightBlue;
+            button5.FlatAppearance.BorderColor = Color.MintCream;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatAppearance.CheckedBackColor = Color.SteelBlue;
+            button5.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button5.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Location = new Point(197, 365);
             button5.Name = "button5";
             button5.Size = new Size(149, 27);
             button5.TabIndex = 6;
+            button5.TabStop = false;
             button5.Text = "Назад в меню";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             button5.Click += button_back_menu_Click;
             // 
             // button_search
             // 
-            button_search.Location = new Point(342, 69);
+            button_search.BackColor = Color.LightBlue;
+            button_search.FlatAppearance.BorderColor = Color.MintCream;
+            button_search.FlatAppearance.BorderSize = 0;
+            button_search.FlatAppearance.CheckedBackColor = Color.SteelBlue;
+            button_search.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_search.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_search.FlatStyle = FlatStyle.Flat;
+            button_search.Location = new Point(360, 78);
             button_search.Name = "button_search";
             button_search.Size = new Size(140, 23);
             button_search.TabIndex = 5;
+            button_search.TabStop = false;
             button_search.Text = "Искать";
-            button_search.UseVisualStyleBackColor = true;
+            button_search.UseVisualStyleBackColor = false;
             button_search.Click += button_search_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(24, 51);
+            label1.Location = new Point(42, 60);
             label1.Name = "label1";
             label1.Size = new Size(62, 15);
             label1.TabIndex = 4;
@@ -513,7 +632,7 @@
             comboBox1.AutoCompleteCustomSource.AddRange(new string[] { "Название", "Автор", "Жанр" });
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Название", "Автор", "Жанр" });
-            comboBox1.Location = new Point(24, 69);
+            comboBox1.Location = new Point(42, 78);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 3;
@@ -521,13 +640,14 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(151, 69);
+            textBox1.Location = new Point(169, 78);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(185, 23);
             textBox1.TabIndex = 2;
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(label7);
             tabPage5.Controls.Add(label5);
             tabPage5.Controls.Add(button6);
             tabPage5.Controls.Add(button_back);
@@ -538,10 +658,19 @@
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
             tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(520, 382);
+            tabPage5.Size = new Size(539, 422);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "tabPage5";
             tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(62, 323);
+            label7.Name = "label7";
+            label7.Size = new Size(73, 15);
+            label7.TabIndex = 9;
+            label7.Text = "ID читателя:";
             // 
             // label5
             // 
@@ -555,36 +684,59 @@
             // 
             // button6
             // 
-            button6.Location = new Point(179, 337);
+            button6.BackColor = Color.LightBlue;
+            button6.FlatAppearance.BorderColor = Color.MintCream;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button6.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Location = new Point(218, 364);
             button6.Name = "button6";
             button6.Size = new Size(149, 27);
             button6.TabIndex = 7;
+            button6.TabStop = false;
             button6.Text = "Назад в меню";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             button6.Click += button_back_menu_Click;
             // 
             // button_back
             // 
-            button_back.Location = new Point(261, 292);
+            button_back.BackColor = Color.LightBlue;
+            button_back.FlatAppearance.BorderColor = Color.MintCream;
+            button_back.FlatAppearance.BorderSize = 0;
+            button_back.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_back.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_back.FlatStyle = FlatStyle.Flat;
+            button_back.Location = new Point(380, 319);
             button_back.Name = "button_back";
             button_back.Size = new Size(95, 23);
             button_back.TabIndex = 6;
+            button_back.TabStop = false;
             button_back.Text = "Возвратить";
-            button_back.UseVisualStyleBackColor = true;
+            button_back.UseVisualStyleBackColor = false;
+            button_back.Click += button_back_Click;
             // 
             // button_give_book
             // 
-            button_give_book.Location = new Point(160, 292);
+            button_give_book.BackColor = Color.LightBlue;
+            button_give_book.FlatAppearance.BorderColor = Color.MintCream;
+            button_give_book.FlatAppearance.BorderSize = 0;
+            button_give_book.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_give_book.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_give_book.FlatStyle = FlatStyle.Flat;
+            button_give_book.Location = new Point(279, 319);
             button_give_book.Name = "button_give_book";
             button_give_book.Size = new Size(95, 23);
             button_give_book.TabIndex = 5;
+            button_give_book.TabStop = false;
             button_give_book.Text = "Выдать";
-            button_give_book.UseVisualStyleBackColor = true;
+            button_give_book.UseVisualStyleBackColor = false;
+            button_give_book.Click += button_give_book_Click;
             // 
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(22, 292);
+            comboBox2.Location = new Point(141, 319);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(121, 23);
             comboBox2.TabIndex = 4;
@@ -592,9 +744,9 @@
             // listView5
             // 
             listView5.Columns.AddRange(new ColumnHeader[] { columnHeader18, columnHeader20, columnHeader21 });
-            listView5.Location = new Point(301, 71);
+            listView5.Location = new Point(313, 71);
             listView5.Name = "listView5";
-            listView5.Size = new Size(201, 204);
+            listView5.Size = new Size(220, 225);
             listView5.TabIndex = 3;
             listView5.UseCompatibleStateImageBehavior = false;
             listView5.View = View.Details;
@@ -619,7 +771,7 @@
             listView4.Columns.AddRange(new ColumnHeader[] { columnHeader17, columnHeader19, columnHeader22 });
             listView4.Location = new Point(13, 71);
             listView4.Name = "listView4";
-            listView4.Size = new Size(273, 204);
+            listView4.Size = new Size(294, 225);
             listView4.TabIndex = 2;
             listView4.UseCompatibleStateImageBehavior = false;
             listView4.View = View.Details;
@@ -633,7 +785,7 @@
             // 
             columnHeader19.Text = "Название";
             columnHeader19.TextAlign = HorizontalAlignment.Center;
-            columnHeader19.Width = 120;
+            columnHeader19.Width = 150;
             // 
             // columnHeader22
             // 
@@ -648,6 +800,10 @@
             ClientSize = new Size(528, 410);
             Controls.Add(tabControl1);
             Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MaximumSize = new Size(544, 449);
+            MinimizeBox = false;
+            MinimumSize = new Size(544, 449);
             Name = "Form1";
             Text = "Библиотека";
             tabControl1.ResumeLayout(false);
@@ -727,5 +883,6 @@
         private ColumnHeader columnHeader16;
         private Button button_true;
         private Button button_false;
+        private Label label7;
     }
 }

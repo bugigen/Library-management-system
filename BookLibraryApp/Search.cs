@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookLibraryApp.Books.Dto;
-using BookLibraryApp.Books.Models;
-using BookLibraryApp.Books.Service;
+﻿using BookLibraryApp.Domain.Models;
+using BookLibraryApp.Logic.Service.BooksService;
+using BookLibraryApp.Logic.Service.SearchService;
+using BookLibraryApp.Domain.DTO;
 
 namespace BookLibraryApp
 {
@@ -18,15 +14,15 @@ namespace BookLibraryApp
             book = book_in;
         }
 
-        public List<Book> FindName(string name)
-        {
-            return book.Where(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)).ToList();
-        }
+        //public List<Book> FindName(string name)
+        //{
+        //    //return book.Where(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)).ToList();
+        //}
 
-        public List<Book> FindAge(int age)
-        {
-            return book.Where(p => p.PublishingYear == age).ToList();
-        }
+        //public List<Book> FindAge(int age)
+        //{
+        //    return book.Where(p => p.PublishingYear == age).ToList();
+        //}
 
         public List<Book> FindAuthor(string author)
         {
@@ -38,14 +34,14 @@ namespace BookLibraryApp
             return book.Where(p => p.Genre.Equals(genre, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
-        public List<Book> FindBusy()
-        {
-            return book.Where(p => p.IsAlreadyTaken == false).ToList();
-        }
+        //public List<Book> FindBusy()
+        //{
+        //    return book.Where(p => p.IsAlreadyTaken == false).ToList();
+        //}
 
-        public List<Book> FindFree()
-        {
-            return book.Where(p => p.IsAlreadyTaken == true).ToList();
-        }
+        //public List<Book> FindFree()
+        //{
+        //    return book.Where(p => p.IsAlreadyTaken == true).ToList();
+        //}
     }
 }
