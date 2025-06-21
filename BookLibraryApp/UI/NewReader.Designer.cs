@@ -130,6 +130,8 @@
             Controls.Add(textBox_lastname);
             Controls.Add(textBox_firstname);
             Controls.Add(label1);
+            MaximumSize = new Size(384, 248);
+            MinimumSize = new Size(384, 248);
             Name = "NewReader";
             Text = "Новый читатель";
             ResumeLayout(false);
