@@ -30,7 +30,12 @@ namespace BookLibraryApp.Logic.Service.ReaderService
         {
             using (var context = new LibraryAppContext())
             {
-                var readerToRemove = GetReaderById(id);
+                var readerToRemove = await context.Readers.FindAsync(id);
+
+                if (readerToRemove is null)
+                {
+                    throw new NotFoundException($"Читатель с id {id} не найден");
+                }
 
                 if (context.RentedBooks.Where(b => b.ReaderId == id).Count() > 0)
                 {
@@ -49,7 +54,12 @@ namespace BookLibraryApp.Logic.Service.ReaderService
         {
             using (var context = new LibraryAppContext())
             {
-                var readerToUpdate = GetReaderById(id);
+                var readerToUpdate = await context.Readers.FindAsync(id);
+
+                if (readerToUpdate is null)
+                {
+                    throw new NotFoundException($"Читатель с id {id} не найден");
+                }
 
                 if (!string.IsNullOrEmpty(readerDto.FirstName))
                 {
@@ -66,7 +76,6 @@ namespace BookLibraryApp.Logic.Service.ReaderService
             }
         }
 
-        // Найти читателя по ID
         public Reader GetReaderById(int id)
         {
             using (var context = new LibraryAppContext())
@@ -80,7 +89,6 @@ namespace BookLibraryApp.Logic.Service.ReaderService
             }
         }
 
-        // Поиск читателя по ID
         public List<Reader> GetAllReaders()
         {
             using (var context = new LibraryAppContext())

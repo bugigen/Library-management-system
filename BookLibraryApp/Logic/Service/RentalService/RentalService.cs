@@ -1,11 +1,22 @@
 ﻿using BookLibraryApp.Domain.Models;
 using BookLibraryApp.Infrastructure;
 using BookLibraryApp.Logic.CustomExceptions;
+using BookLibraryApp.Logic.Service.BooksService;
+using BookLibraryApp.Logic.Service.ReaderService;
+
 namespace BookLibraryApp.Logic.Service.RentalService
 {
     public class RentalService : IRentalService
     {
-        public async Task RentBook(int bookId, int readerId)
+        public List<RentedBook> GetAllRents()
+        {
+            using (var context = new LibraryAppContext())
+            {
+                return context.RentedBooks.Where(x => x.Status.Equals(Constants.STILL_RENTED)).ToList();
+            }
+        }
+
+        public async Task<RentedBook> RentBook(int bookId, int readerId)
         {
             using (var context = new LibraryAppContext())
             {
@@ -27,14 +38,16 @@ namespace BookLibraryApp.Logic.Service.RentalService
                     BookId = bookId,
                     ReaderId = readerId,
                     RentDate = DateTime.Now.ToString(),
-                    Status = Constants.STILL_RENTED
+                    Status = Constants.STILL_RENTED,
                 };
+
                 await context.RentedBooks.AddAsync(rentedBook);
                 await context.SaveChangesAsync();
+                return rentedBook;
             }
         }
 
-        public async Task ReturnBook(int bookId, int readerId)
+        public async Task<RentedBook> ReturnBook(int bookId, int readerId)
         {
             using (var context = new LibraryAppContext())
             {
@@ -55,6 +68,7 @@ namespace BookLibraryApp.Logic.Service.RentalService
                 rent.Status = Constants.RENT_FINISHED;
 
                 await context.SaveChangesAsync();
+                return rent;
             }
         }
     }

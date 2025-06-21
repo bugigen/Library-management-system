@@ -28,9 +28,13 @@ namespace BookLibraryApp.Logic.Service.BooksService
 
         public async void DeleteBook(int id)
         {
-            var book = GetBookById(id);
             using (var context = new LibraryAppContext())
             {
+                var book = await context.Books.FindAsync(id);
+                if (book is null)
+                {
+                    throw new NotFoundException($"Книга с id {id} не найдена");
+                }
                 context.Books.Remove(book);
                 await context.SaveChangesAsync();
             }

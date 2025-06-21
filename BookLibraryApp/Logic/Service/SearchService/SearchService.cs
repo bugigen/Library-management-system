@@ -11,7 +11,7 @@ namespace BookLibraryApp.Logic.Service.SearchService
         {
             using (var context = new LibraryAppContext())
             {
-                return context.Books.Where(p => EF.Functions.Like(p.Title.ToLower(), $"%{name.ToLower()}%")).ToList();
+                return context.Books.Where(p => EF.Functions.Like(p.Title, $"%{name}%")).ToList();
             }
         }
 
@@ -27,7 +27,7 @@ namespace BookLibraryApp.Logic.Service.SearchService
         {
             using (var context = new LibraryAppContext())
             {
-                return context.Books.Where(p => EF.Functions.Like(p.Author.ToLower(), $"%{author.ToLower()}%")).ToList();
+                return context.Books.Where(p => EF.Functions.Like(p.Author, $"%{author}%")).ToList();
             }
         }
 
@@ -35,7 +35,7 @@ namespace BookLibraryApp.Logic.Service.SearchService
         {
             using (var context = new LibraryAppContext())
             {
-                return context.Books.Where(p => EF.Functions.Like(p.Genre.ToLower(), $"%{genre.ToLower()}%")).ToList();
+                return context.Books.Where(p => EF.Functions.Like(p.Genre, $"%{genre}%")).ToList();
             }
         }
 

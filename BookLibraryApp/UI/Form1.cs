@@ -12,14 +12,19 @@ namespace BookLibraryApp
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public static Form1 SelfRef { get; set; }
-        private readonly DatabaseService _databaseService;
-
+        private readonly IRentalService _rentalService;
+        private readonly IReaderService _readerService;
+        private readonly IBookService _bookService;
+        private readonly ISearchService _searchService;
         public Form1()
         {
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
 
-            _databaseService = new DatabaseService();
+            _rentalService = new RentalService();
+            _bookService = new BookService();
+            _readerService = new ReaderService();
+            _searchService = new SearchService();
 
             if (listView1.Columns.Count == 0) return;
 
@@ -32,7 +37,7 @@ namespace BookLibraryApp
             }
             SelfRef = this;
 
-            byte[] iconBytes = Properties.Resources.free_icon_digital_library_7398682; 
+            byte[] iconBytes = Properties.Resources.free_icon_digital_library_7398682;
 
             using (var memoryStream = new MemoryStream(iconBytes))
             {
@@ -57,8 +62,7 @@ namespace BookLibraryApp
 
         public void listView1_repit()
         {
-            BookService bookService = new BookService();
-            List<Book> books = bookService.GetBooks();
+            List<Book> books = _bookService.GetBooks();
             listView1.Items.Clear();
             comboBox3.Items.Clear();
 
@@ -67,8 +71,8 @@ namespace BookLibraryApp
                 comboBox3.Items.Add(book.Id);
                 ListViewItem item = new ListViewItem();
                 item.Text = book.Id.ToString();
-                item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Author.ToString());
+                item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Year.ToString());
                 item.SubItems.Add(book.Genre.ToString());
                 item.SubItems.Add(book.Status.ToString());
@@ -79,8 +83,7 @@ namespace BookLibraryApp
 
         public void listView2_repit()
         {
-            ReaderService readerService = new ReaderService();
-            List<Reader> readlist = readerService.GetAllReaders();
+            List<Reader> readlist = _readerService.GetAllReaders();
 
             listView2.Items.Clear();
 
@@ -108,8 +111,7 @@ namespace BookLibraryApp
             //ListViewItem selectedItem = listView1.SelectedItems[0];
             int id = Convert.ToInt32(comboBox3.SelectedItem.ToString());
             //int id = Convert.ToInt32(selectedItem.SubItems[0].Text);
-            BookService serv = new BookService();
-            Book editbook = serv.GetBookById(id);
+            Book editbook = _bookService.GetBookById(id);
             EditBook editBook = new EditBook(editbook, SelfRef);
             editBook.Show();
             //listView2_repit();
@@ -129,15 +131,13 @@ namespace BookLibraryApp
 
         private void button3_Click(object sender, EventArgs e)
         {
+            PrintRents();
             this.tabControl1.SelectedIndex = 4;
-            ReaderService readerService = new ReaderService();
-            List<Reader> readlist = readerService.GetAllReaders();
+            List<Reader> readlist = _readerService.GetAllReaders();
 
-            BookService bookService = new BookService();
-            List<Book> books = bookService.GetBooks();
+            List<Book> books = _bookService.GetBooks();
 
             comboBox1.Items.Clear();
-            listView4.Items.Clear();
             listView5.Items.Clear();
 
             foreach (Reader book in readlist)
@@ -157,7 +157,7 @@ namespace BookLibraryApp
                 ListViewItem item = new ListViewItem();
                 item.SubItems.Add(book.Id.ToString());
                 item.SubItems.Add(book.Title.ToString());
-
+                comboBox4.Items.Add(book.Id.ToString());
 
                 listView3.Items.Add(item);
             }
@@ -193,27 +193,25 @@ namespace BookLibraryApp
 
         private void button_search_Click(object sender, EventArgs e)
         {
-            BookService bookService = new BookService();
-            List<Book> books = bookService.GetBooks();
+            List<Book> books = _bookService.GetBooks();
 
             List<Book> books_out = new List<Book>();
 
             //Search search = new Search(books);
-            SearchService searchService = new SearchService();
 
             string selecte = comboBox1.SelectedItem.ToString();
             switch (selecte)
             {
                 case "Название":
-                    books_out = searchService.FindBooksByName(textBox1.Text);
+                    books_out = _searchService.FindBooksByName(textBox1.Text);
                     //books_out = search.FindName
                     break;
                 case "Автор":
-                    books_out = searchService.FindBooksByAuthor(textBox1.Text);
+                    books_out = _searchService.FindBooksByAuthor(textBox1.Text);
                     //books_out = search.FindAuthor(textBox1.Text);
                     break;
                 case "Жанр":
-                    books_out = searchService.FindBooksByGenre(textBox1.Text);
+                    books_out = _searchService.FindBooksByGenre(textBox1.Text);
                     //books_out = search.FindGenre(textBox1.Text);
                     break;
 
@@ -229,8 +227,8 @@ namespace BookLibraryApp
                 ListViewItem item = new ListViewItem();
                 //item.SubItems.Add(book.Id.ToString());
                 item.Text = book.Id.ToString();
-                item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Author.ToString());
+                item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Year.ToString());
                 item.SubItems.Add(book.Genre.ToString());
                 item.SubItems.Add(book.Status.ToString());
@@ -241,14 +239,12 @@ namespace BookLibraryApp
 
         private void button_true_Click(object sender, EventArgs e)
         {
-            BookService bookService = new BookService();
-            List<Book> books = bookService.GetBooks();
+            List<Book> books = _bookService.GetBooks();
 
             List<Book> books_out = new List<Book>();
 
             //Search search = new Search(books);
-            SearchService searchService = new SearchService();
-            books_out = searchService.FindRentedBooks();
+            books_out = _searchService.FindNotRentedBooks();
 
             listView3.Items.Clear();
 
@@ -257,8 +253,8 @@ namespace BookLibraryApp
                 ListViewItem item = new ListViewItem();
                 //item.SubItems.Add(book.Id.ToString());
                 item.Text = book.Id.ToString();
-                item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Author.ToString());
+                item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Year.ToString());
                 item.SubItems.Add(book.Genre.ToString());
                 item.SubItems.Add(book.Status.ToString());
@@ -269,14 +265,12 @@ namespace BookLibraryApp
 
         private void button_false_Click(object sender, EventArgs e)
         {
-            BookService bookService = new BookService();
-            List<Book> books = bookService.GetBooks();
+            List<Book> books = _bookService.GetBooks();
 
             List<Book> books_out = new List<Book>();
 
             //Search search = new Search(books);
-            SearchService searchService = new SearchService();
-            books_out = searchService.FindNotRentedBooks();
+            books_out = _searchService.FindRentedBooks();
 
             listView3.Items.Clear();
 
@@ -285,8 +279,8 @@ namespace BookLibraryApp
                 ListViewItem item = new ListViewItem();
                 //item.SubItems.Add(book.Id.ToString());
                 item.Text = book.Id.ToString();
-                item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Author.ToString());
+                item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Year.ToString());
                 item.SubItems.Add(book.Genre.ToString());
                 item.SubItems.Add(book.Status.ToString());
@@ -300,35 +294,64 @@ namespace BookLibraryApp
             //ListViewItem selectedItem = listView1.SelectedItems[0];
             //int id = Convert.ToInt32(selectedItem.SubItems[0].Text);
             int id = Convert.ToInt32(comboBox3.SelectedItem.ToString());
-            BookService serv = new BookService();
-            serv.DeleteBook(id);
+            _bookService.DeleteBook(id);
             listView1_repit();
         }
 
         private void button_give_book_Click(object sender, EventArgs e)
         {
-            ListViewItem selectedItem = listView4.SelectedItems[0];
-            int id_book = Convert.ToInt32(selectedItem.SubItems[0].Text);
+            var selectedItem = comboBox4.SelectedItem;
+            int id_book = Convert.ToInt32(selectedItem);
 
             //ListViewItem selectedItem2 = listView5.SelectedItems[0];
             //int id_reader = Convert.ToInt32(selectedItem2.SubItems[0].Text);
             int id_reader = Convert.ToInt32(comboBox2.Text);
 
-            RentalService rentalService = new RentalService();
-            rentalService.RentBook(id_book, id_reader);
+            var rent = _rentalService.RentBook(id_book, id_reader).Result;
+            rent.Book = _bookService.GetBookById(rent.BookId);
+            rent.Reader = _readerService.GetReaderById(rent.ReaderId);
+
+            PrintRents();
         }
 
         private void button_back_Click(object sender, EventArgs e)
         {
-            ListViewItem selectedItem = listView4.SelectedItems[0];
-            int id_book = Convert.ToInt32(selectedItem.SubItems[0].Text);
+            var selectedItem = comboBox4.SelectedItem;
+            int id_book = Convert.ToInt32(selectedItem);
 
             //ListViewItem selectedItem2 = listView5.SelectedItems[0];
             //int id_reader = Convert.ToInt32(selectedItem2.SubItems[0].Text);
             int id_reader = Convert.ToInt32(comboBox2.Text);
 
             RentalService rentalService = new RentalService();
-            rentalService.ReturnBook(id_book, id_reader);
+            var rent = rentalService.ReturnBook(id_book, id_reader).Result;
+
+            PrintRents();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PrintRents()
+        {
+            listView4.Items.Clear();
+            foreach (var e in _rentalService.GetAllRents())
+            {
+                ListViewItem item = new ListViewItem();
+                var book = _bookService.GetBookById(e.BookId);
+                var reader = _readerService.GetReaderById(e.ReaderId);
+                item.SubItems.Add(e.BookId.ToString());
+                item.SubItems.Add(book.Title);
+                item.SubItems.Add(reader.FirstName + " " + reader.LastName);
+                listView4.Items.Add(item);
+            }
         }
     }
 }

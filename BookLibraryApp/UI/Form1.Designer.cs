@@ -36,10 +36,12 @@
             button1 = new Button();
             button_show_book = new Button();
             tabPage2 = new TabPage();
+            groupBox1 = new GroupBox();
+            comboBox3 = new ComboBox();
+            button_edit_book = new Button();
+            button_delet_book = new Button();
             label2 = new Label();
             button_back_menu = new Button();
-            button_delet_book = new Button();
-            button_edit_book = new Button();
             button_new_book = new Button();
             listView1 = new ListView();
             columnHeader1 = new ColumnHeader();
@@ -88,15 +90,15 @@
             columnHeader17 = new ColumnHeader();
             columnHeader19 = new ColumnHeader();
             columnHeader22 = new ColumnHeader();
-            comboBox3 = new ComboBox();
-            groupBox1 = new GroupBox();
+            label8 = new Label();
+            comboBox4 = new ComboBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
+            groupBox1.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
-            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -127,6 +129,7 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "tabPage1";
             tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Click += tabPage1_Click;
             // 
             // label6
             // 
@@ -225,6 +228,60 @@
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(comboBox3);
+            groupBox1.Controls.Add(button_edit_book);
+            groupBox1.Controls.Add(button_delet_book);
+            groupBox1.Location = new Point(197, 316);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(327, 87);
+            groupBox1.TabIndex = 8;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Укажите номер ID книги для работы";
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(22, 19);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(121, 23);
+            comboBox3.TabIndex = 7;
+            // 
+            // button_edit_book
+            // 
+            button_edit_book.BackColor = Color.LightBlue;
+            button_edit_book.FlatAppearance.BorderColor = Color.MintCream;
+            button_edit_book.FlatAppearance.BorderSize = 0;
+            button_edit_book.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_edit_book.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_edit_book.FlatStyle = FlatStyle.Flat;
+            button_edit_book.Location = new Point(6, 48);
+            button_edit_book.Name = "button_edit_book";
+            button_edit_book.Size = new Size(149, 29);
+            button_edit_book.TabIndex = 2;
+            button_edit_book.TabStop = false;
+            button_edit_book.Text = "Редактирование книги";
+            button_edit_book.UseVisualStyleBackColor = false;
+            button_edit_book.Click += button_edit_book_Click;
+            // 
+            // button_delet_book
+            // 
+            button_delet_book.BackColor = Color.LightBlue;
+            button_delet_book.FlatAppearance.BorderColor = Color.MintCream;
+            button_delet_book.FlatAppearance.BorderSize = 0;
+            button_delet_book.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            button_delet_book.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
+            button_delet_book.FlatStyle = FlatStyle.Flat;
+            button_delet_book.Location = new Point(172, 48);
+            button_delet_book.Name = "button_delet_book";
+            button_delet_book.Size = new Size(149, 29);
+            button_delet_book.TabIndex = 3;
+            button_delet_book.TabStop = false;
+            button_delet_book.Text = "Удаление книги";
+            button_delet_book.UseVisualStyleBackColor = false;
+            button_delet_book.Click += button_delet_book_Click;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -251,40 +308,6 @@
             button_back_menu.Text = "Назад в меню";
             button_back_menu.UseVisualStyleBackColor = false;
             button_back_menu.Click += button_back_menu_Click;
-            // 
-            // button_delet_book
-            // 
-            button_delet_book.BackColor = Color.LightBlue;
-            button_delet_book.FlatAppearance.BorderColor = Color.MintCream;
-            button_delet_book.FlatAppearance.BorderSize = 0;
-            button_delet_book.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
-            button_delet_book.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
-            button_delet_book.FlatStyle = FlatStyle.Flat;
-            button_delet_book.Location = new Point(172, 48);
-            button_delet_book.Name = "button_delet_book";
-            button_delet_book.Size = new Size(149, 29);
-            button_delet_book.TabIndex = 3;
-            button_delet_book.TabStop = false;
-            button_delet_book.Text = "Удаление книги";
-            button_delet_book.UseVisualStyleBackColor = false;
-            button_delet_book.Click += button_delet_book_Click;
-            // 
-            // button_edit_book
-            // 
-            button_edit_book.BackColor = Color.LightBlue;
-            button_edit_book.FlatAppearance.BorderColor = Color.MintCream;
-            button_edit_book.FlatAppearance.BorderSize = 0;
-            button_edit_book.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
-            button_edit_book.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
-            button_edit_book.FlatStyle = FlatStyle.Flat;
-            button_edit_book.Location = new Point(6, 48);
-            button_edit_book.Name = "button_edit_book";
-            button_edit_book.Size = new Size(149, 29);
-            button_edit_book.TabIndex = 2;
-            button_edit_book.TabStop = false;
-            button_edit_book.Text = "Редактирование книги";
-            button_edit_book.UseVisualStyleBackColor = false;
-            button_edit_book.Click += button_edit_book_Click;
             // 
             // button_new_book
             // 
@@ -611,6 +634,8 @@
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(comboBox4);
+            tabPage5.Controls.Add(label8);
             tabPage5.Controls.Add(label7);
             tabPage5.Controls.Add(label5);
             tabPage5.Controls.Add(button6);
@@ -630,7 +655,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(62, 323);
+            label7.Location = new Point(65, 305);
             label7.Name = "label7";
             label7.Size = new Size(73, 15);
             label7.TabIndex = 9;
@@ -654,7 +679,7 @@
             button6.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
             button6.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
             button6.FlatStyle = FlatStyle.Flat;
-            button6.Location = new Point(218, 364);
+            button6.Location = new Point(210, 376);
             button6.Name = "button6";
             button6.Size = new Size(149, 27);
             button6.TabIndex = 7;
@@ -671,7 +696,7 @@
             button_back.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
             button_back.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
             button_back.FlatStyle = FlatStyle.Flat;
-            button_back.Location = new Point(380, 319);
+            button_back.Location = new Point(380, 323);
             button_back.Name = "button_back";
             button_back.Size = new Size(95, 23);
             button_back.TabIndex = 6;
@@ -688,7 +713,7 @@
             button_give_book.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
             button_give_book.FlatAppearance.MouseOverBackColor = Color.SkyBlue;
             button_give_book.FlatStyle = FlatStyle.Flat;
-            button_give_book.Location = new Point(279, 319);
+            button_give_book.Location = new Point(279, 323);
             button_give_book.Name = "button_give_book";
             button_give_book.Size = new Size(95, 23);
             button_give_book.TabIndex = 5;
@@ -700,7 +725,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(141, 319);
+            comboBox2.Location = new Point(144, 302);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(121, 23);
             comboBox2.TabIndex = 4;
@@ -757,25 +782,23 @@
             columnHeader22.TextAlign = HorizontalAlignment.Center;
             columnHeader22.Width = 100;
             // 
-            // comboBox3
+            // label8
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(22, 19);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(121, 23);
-            comboBox3.TabIndex = 7;
+            label8.AutoSize = true;
+            label8.Location = new Point(65, 340);
+            label8.Name = "label8";
+            label8.Size = new Size(56, 15);
+            label8.TabIndex = 10;
+            label8.Text = "ID книги:";
+            label8.Click += label8_Click;
             // 
-            // groupBox1
+            // comboBox4
             // 
-            groupBox1.Controls.Add(comboBox3);
-            groupBox1.Controls.Add(button_edit_book);
-            groupBox1.Controls.Add(button_delet_book);
-            groupBox1.Location = new Point(197, 316);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(327, 87);
-            groupBox1.TabIndex = 8;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Укажите номер ID книги для работы";
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Location = new Point(144, 337);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(121, 23);
+            comboBox4.TabIndex = 11;
             // 
             // Form1
             // 
@@ -795,13 +818,13 @@
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            groupBox1.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             tabPage4.ResumeLayout(false);
             tabPage4.PerformLayout();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
-            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -869,5 +892,7 @@
         private Label label7;
         private GroupBox groupBox1;
         private ComboBox comboBox3;
+        private Label label8;
+        private ComboBox comboBox4;
     }
 }
