@@ -9,10 +9,12 @@ namespace BookLibraryApp
 {
     public partial class AddNewBook : Form
     {
-
+        private readonly IBookService _bookService;
         public AddNewBook(Form1 ParentRef)
         {
             InitializeComponent();
+
+            _bookService = new BookService();
 
             byte[] iconBytes = Properties.Resources.free_icon_digital_library_7398682;
 
@@ -41,6 +43,7 @@ namespace BookLibraryApp
                         textBox_author.Text,
                         textBox_ganre.Text
                     );
+                _bookService.AddBook(book);
             }
             catch (ArgumentException ex)
             {
@@ -68,34 +71,6 @@ namespace BookLibraryApp
                 Form1.SelfRef.listView1_repit();
                 this.Close();
             }
-
-            //using (var command = new SqliteCommand())
-            //{
-            //    command.Connection = Program.DbService.Connection;
-            //    command.CommandText = """
-            //        INSERT INTO Books (Title, Author, Year, Genre, Status) 
-            //        VALUES (@title, @author, @year, @genre, 'доступна')
-            //        """;
-
-            //    command.Parameters.AddWithValue("@title", textBox_title.Text);
-            //    command.Parameters.AddWithValue("@author", textBox_author.Text);
-            //    command.Parameters.AddWithValue("@year", int.Parse(textBox_age.Text));
-            //    command.Parameters.AddWithValue("@genre", textBox_ganre.Text);
-
-            //    int rowsAffected = command.ExecuteNonQuery();
-
-            //    if (rowsAffected > 0)
-            //    {
-            //        MessageBox.Show("Книга успешно добавлена.");
-            //        this.Close();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Не удалось добавить книгу.");
-            //    }
-            //}
-
-            //BookDto book = new BookDto(idel, author, title, age, ganre, "free");
         }
     }
 }

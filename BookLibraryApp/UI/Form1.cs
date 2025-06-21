@@ -60,11 +60,13 @@ namespace BookLibraryApp
             BookService bookService = new BookService();
             List<Book> books = bookService.GetBooks();
             listView1.Items.Clear();
+            comboBox3.Items.Clear();
 
             foreach (Book book in books)
             {
+                comboBox3.Items.Add(book.Id);
                 ListViewItem item = new ListViewItem();
-                item.SubItems.Add(book.Id.ToString());
+                item.Text = book.Id.ToString();
                 item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Author.ToString());
                 item.SubItems.Add(book.Year.ToString());
@@ -85,7 +87,8 @@ namespace BookLibraryApp
             foreach (Reader book in readlist)
             {
                 ListViewItem item = new ListViewItem();
-                item.SubItems.Add(book.Id.ToString());
+                //item.SubItems.Add(book.Id.ToString());
+                item.Text = book.Id.ToString();
                 item.SubItems.Add(book.FirstName.ToString());
                 item.SubItems.Add(book.LastName.ToString());
                 //item.SubItems.Add(book.Year.ToString());
@@ -102,12 +105,14 @@ namespace BookLibraryApp
 
         private void button_edit_book_Click(object sender, EventArgs e)
         {
-            ListViewItem selectedItem = listView1.SelectedItems[0];
-            int id = Convert.ToInt32(selectedItem.SubItems[0].Text);
+            //ListViewItem selectedItem = listView1.SelectedItems[0];
+            int id = Convert.ToInt32(comboBox3.SelectedItem.ToString());
+            //int id = Convert.ToInt32(selectedItem.SubItems[0].Text);
             BookService serv = new BookService();
             Book editbook = serv.GetBookById(id);
             EditBook editBook = new EditBook(editbook, SelfRef);
             editBook.Show();
+            //listView2_repit();
         }
 
         private void button_new_reader_Click(object sender, EventArgs e)
@@ -145,7 +150,7 @@ namespace BookLibraryApp
                 item.SubItems.Add(book.LastName.ToString());
                 listView5.Items.Add(item);
             }
-            comboBox1.SelectedIndex = 0;
+            //comboBox1.SelectedIndex = 0;
 
             foreach (Book book in books)
             {
@@ -222,7 +227,8 @@ namespace BookLibraryApp
             foreach (Book book in books_out)
             {
                 ListViewItem item = new ListViewItem();
-                item.SubItems.Add(book.Id.ToString());
+                //item.SubItems.Add(book.Id.ToString());
+                item.Text = book.Id.ToString();
                 item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Author.ToString());
                 item.SubItems.Add(book.Year.ToString());
@@ -249,7 +255,8 @@ namespace BookLibraryApp
             foreach (Book book in books_out)
             {
                 ListViewItem item = new ListViewItem();
-                item.SubItems.Add(book.Id.ToString());
+                //item.SubItems.Add(book.Id.ToString());
+                item.Text = book.Id.ToString();
                 item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Author.ToString());
                 item.SubItems.Add(book.Year.ToString());
@@ -276,7 +283,8 @@ namespace BookLibraryApp
             foreach (Book book in books_out)
             {
                 ListViewItem item = new ListViewItem();
-                item.SubItems.Add(book.Id.ToString());
+                //item.SubItems.Add(book.Id.ToString());
+                item.Text = book.Id.ToString();
                 item.SubItems.Add(book.Title.ToString());
                 item.SubItems.Add(book.Author.ToString());
                 item.SubItems.Add(book.Year.ToString());
@@ -289,10 +297,12 @@ namespace BookLibraryApp
 
         private void button_delet_book_Click(object sender, EventArgs e)
         {
-            ListViewItem selectedItem = listView1.SelectedItems[0];
-            int id = Convert.ToInt32(selectedItem.SubItems[0].Text);
+            //ListViewItem selectedItem = listView1.SelectedItems[0];
+            //int id = Convert.ToInt32(selectedItem.SubItems[0].Text);
+            int id = Convert.ToInt32(comboBox3.SelectedItem.ToString());
             BookService serv = new BookService();
             serv.DeleteBook(id);
+            listView2_repit();
         }
 
         private void button_give_book_Click(object sender, EventArgs e)

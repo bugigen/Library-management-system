@@ -3,14 +3,18 @@ using BookLibraryApp.Domain.Models;
 using BookLibraryApp.Logic.Service.BooksService;
 using BookLibraryApp.Logic.Service.SearchService;
 using BookLibraryApp.Domain.DTO;
+using BookLibraryApp.Logic.Service.ReaderService;
 
 namespace BookLibraryApp
 {
     public partial class NewReader : Form
     {
+        private readonly IReaderService _readerService;
         public NewReader(Form1 ParentRef)
         {
             InitializeComponent();
+
+            _readerService = new ReaderService();
 
             byte[] iconBytes = Properties.Resources.free_icon_digital_library_7398682;
 
@@ -32,8 +36,8 @@ namespace BookLibraryApp
         {
             string FirstName = textBox_firstname.Text;
             string LastName = textBox_lastname.Text;
-            string BookList = textBox_book.Text;
-            string[] BookList_2 = BookList.Split(',');
+            //string BookList = textBox_book.Text;
+            //string[] BookList_2 = BookList.Split(',');
 
             //List<Book> books = new List<Book>;
             //BookService bookService = new BookService();
@@ -51,9 +55,12 @@ namespace BookLibraryApp
 
             try
             {
-                Reader book = new Reader();
-                book.FirstName = FirstName;
-                book.LastName = LastName;
+                //Reader book = new Reader();
+                //book.FirstName = FirstName;
+                //book.LastName = LastName;
+
+                ReaderDto readerDto = new ReaderDto(FirstName, LastName);
+                _readerService.AddNewReader(readerDto);
                 //book.RentedBooks = books_search;
             }
             //catch (ArgumentException ex)

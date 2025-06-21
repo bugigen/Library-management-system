@@ -3,18 +3,25 @@ using BookLibraryApp.Domain.Models;
 using BookLibraryApp.Logic.Service.BooksService;
 using BookLibraryApp.Logic.Service.SearchService;
 using BookLibraryApp.Domain.DTO;
+using BookLibraryApp.Logic.Service.ReaderService;
 
 namespace BookLibraryApp
 {
     public partial class EditBook : Form
     {
+        private readonly IBookService _bookService;
+
+        private int _id;
         public EditBook(Book book, Form1 ParentRef)
         {
             InitializeComponent();
+            _id = book.Id;
             textBox_author.Text = book.Author;
             textBox_ganre.Text = book.Genre;
             textBox_title.Text = book.Title;
             textBox_age.Text = book.Year.ToString();
+
+            _bookService = new BookService();
 
             byte[] iconBytes = Properties.Resources.free_icon_digital_library_7398682;
 
@@ -43,6 +50,8 @@ namespace BookLibraryApp
                         textBox_author.Text,
                         textBox_ganre.Text
                     );
+                _bookService.UpdateBook(_id, book);
+                
             }
             catch (ArgumentException ex)
             {
