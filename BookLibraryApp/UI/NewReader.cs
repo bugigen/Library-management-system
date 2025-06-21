@@ -71,6 +71,11 @@ namespace BookLibraryApp
 
                 return;
             }
+            finally
+            {
+                Form1.SelfRef.listView2_repit();
+                this.Close();
+            }
         }
     }
 }

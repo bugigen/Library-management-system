@@ -75,6 +75,25 @@ namespace BookLibraryApp
             }
         }
 
+        public void listView2_repit()
+        {
+            ReaderService readerService = new ReaderService();
+            List<Reader> readlist = readerService.GetAllReaders();
+
+            listView2.Items.Clear();
+
+            foreach (Reader book in readlist)
+            {
+                ListViewItem item = new ListViewItem();
+                item.SubItems.Add(book.Id.ToString());
+                item.SubItems.Add(book.FirstName.ToString());
+                item.SubItems.Add(book.LastName.ToString());
+                //item.SubItems.Add(book.Year.ToString());
+
+                listView2.Items.Add(item);
+            }
+        }
+
         private void button_new_book_Click(object sender, EventArgs e)
         {
             AddNewBook addNewBook = new AddNewBook(SelfRef);
@@ -100,21 +119,7 @@ namespace BookLibraryApp
         private void button1_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedIndex = 2;
-            ReaderService readerService = new ReaderService();
-            List<Reader> readlist = readerService.GetAllReaders();
-
-            listView2.Items.Clear();
-
-            foreach (Reader book in readlist)
-            {
-                ListViewItem item = new ListViewItem();
-                item.SubItems.Add(book.Id.ToString());
-                item.SubItems.Add(book.FirstName.ToString());
-                item.SubItems.Add(book.LastName.ToString());
-                //item.SubItems.Add(book.Year.ToString());
-
-                listView2.Items.Add(item);
-            }
+            listView2_repit();
         }
 
         private void button3_Click(object sender, EventArgs e)
