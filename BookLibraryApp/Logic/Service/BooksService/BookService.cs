@@ -59,11 +59,17 @@ namespace BookLibraryApp.Logic.Service.BooksService
 
         public async Task<Book> UpdateBook(int id, BookDto dto)
         {
-            var book = GetBookById(id);
             using (var context = new LibraryAppContext())
             {
+                var book = await context.Books.FindAsync(id);
+                if (book == null)
+                {
+                    throw new NotFoundException($"Книга с id {id} не найдена");
+                }
                 book.Title = dto.Name;
                 book.Year = dto.PublishingYear;
+                book.Author = dto.Author;
+                book.Genre = dto.Genre;
                 await context.SaveChangesAsync();
                 return book;
             }
