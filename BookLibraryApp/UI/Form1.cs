@@ -302,7 +302,7 @@ namespace BookLibraryApp
             int id = Convert.ToInt32(comboBox3.SelectedItem.ToString());
             BookService serv = new BookService();
             serv.DeleteBook(id);
-            listView2_repit();
+            listView1_repit();
         }
 
         private void button_give_book_Click(object sender, EventArgs e)
