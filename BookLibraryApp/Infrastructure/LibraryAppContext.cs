@@ -24,7 +24,7 @@ public partial class LibraryAppContext : DbContext
     {
         var dbPath = Path.Combine(AppContext.BaseDirectory, "Infrastructure", "libraryApp.db");
         optionsBuilder.UseSqlite($"Data Source={dbPath}");
-        MessageBox.Show(dbPath);
+        //MessageBox.Show(dbPath);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

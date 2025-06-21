@@ -65,6 +65,11 @@ namespace BookLibraryApp
 
                 return;
             }
+            finally
+            {
+                Form1.SelfRef.listView1_repit();
+                this.Close();
+            }
         }
     }
 }

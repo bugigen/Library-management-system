@@ -52,7 +52,11 @@ namespace BookLibraryApp
         {
             this.tabControl1.SelectedIndex = 1;
             //listView1.Items.Clear();
+            listView1_repit();
+        }
 
+        public void listView1_repit()
+        {
             BookService bookService = new BookService();
             List<Book> books = bookService.GetBooks();
             listView1.Items.Clear();
