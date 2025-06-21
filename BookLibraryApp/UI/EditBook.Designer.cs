@@ -139,6 +139,8 @@
             Controls.Add(textBox_title);
             Controls.Add(textBox_author);
             Controls.Add(label1);
+            MaximumSize = new Size(384, 248);
+            MinimumSize = new Size(384, 248);
             Name = "EditBook";
             Text = "Редактирование книги";
             ResumeLayout(false);
